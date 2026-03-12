@@ -153,3 +153,7 @@ export function getFeaturedProducts() {
 export function getGalleryProducts() {
   return wigProducts.slice(0, 8)
 }
+
+export function getOtherProducts(currentId, limit = 6) {
+  return wigProducts.filter((p) => p.id !== currentId).slice(0, limit)
+}
