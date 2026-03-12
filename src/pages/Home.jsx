@@ -14,50 +14,60 @@ export default function Home() {
 
   return (
     <div>
-      {/* Hero - like reference site */}
-      <section className="bg-gradient-to-br from-[#faf8f5] to-[#f5f0eb] py-12 md:py-20">
-        <div className="max-w-6xl mx-auto px-4 text-center">
-          <p className="text-sm md:text-base text-pink-500 font-medium mb-2">✨ Your Hair, Your Crown</p>
-          <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-4">
-            Luxury Wigs Without the Luxury Price
-          </h1>
-          <p className="text-gray-600 text-lg max-w-2xl mx-auto mb-8">
-            Affordable. Stylish. Confidence in Every Strand. Transform your look with premium quality wigs crafted for everyday queens.
-          </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <button
-              type="button"
-              onClick={() => navigate('/shop')}
-              className="px-6 py-3 bg-gray-900 text-white font-medium rounded hover:bg-gray-800 transition-colors"
-            >
-              Shop Now
-            </button>
-            <a
-              href="https://wa.me/2348116500217"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-6 py-3 border-2 border-gray-900 text-gray-900 font-medium rounded hover:bg-gray-900 hover:text-white transition-colors"
-            >
-              Book Appointment
-            </a>
+      {/* Hero with background image - like reference */}
+      <section
+        className="relative min-h-[85vh] md:min-h-[90vh] flex flex-col justify-between bg-gray-900 py-12 md:py-20 px-4"
+        style={{
+          backgroundImage: 'url(/hero-bg.png)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+        }}
+      >
+        {/* Overlay for text readability */}
+        <div className="absolute inset-0 bg-gradient-to-r from-white/85 via-white/60 to-transparent" aria-hidden />
+        <div className="relative z-10 max-w-6xl mx-auto w-full flex flex-col min-h-[70vh]">
+          <div className="max-w-xl text-left">
+            <p className="text-sm md:text-base text-gray-700 font-medium mb-2">✨ Your Hair, Your Crown</p>
+            <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-4">
+              Luxury Wigs Without the Luxury Price
+            </h1>
+            <p className="text-gray-700 text-lg mb-8">
+              Affordable. Stylish. Confidence in Every Strand. Transform your look with premium quality wigs crafted for everyday queens.
+            </p>
+            <div className="flex flex-wrap gap-4">
+              <button
+                type="button"
+                onClick={() => navigate('/shop')}
+                className="px-6 py-3 bg-gray-900 text-white font-medium rounded hover:bg-gray-800 transition-colors inline-flex items-center gap-2"
+              >
+                Shop Now
+                <span aria-hidden>→</span>
+              </button>
+              <a
+                href="https://wa.me/2348116500217"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-6 py-3 border-2 border-gray-900 text-gray-900 font-medium rounded hover:bg-gray-900 hover:text-white transition-colors inline-flex items-center gap-2"
+              >
+                📅 Book Appointment
+              </a>
+            </div>
           </div>
-        </div>
-      </section>
-
-      {/* Stats */}
-      <section className="border-y border-gray-200 bg-white py-8">
-        <div className="max-w-6xl mx-auto px-4 grid grid-cols-3 gap-6 text-center">
-          <div>
-            <p className="text-2xl md:text-3xl font-bold text-gray-900">500+</p>
-            <p className="text-sm text-gray-600">Happy Clients</p>
-          </div>
-          <div>
-            <p className="text-2xl md:text-3xl font-bold text-gray-900">70+</p>
-            <p className="text-sm text-gray-600">Community Members</p>
-          </div>
-          <div>
-            <p className="text-2xl md:text-3xl font-bold text-gray-900">5★</p>
-            <p className="text-sm text-gray-600">Average Rating</p>
+          {/* Stats - bottom left of hero */}
+          <div className="mt-auto pt-8 grid grid-cols-3 gap-6 text-left max-w-md">
+            <div>
+              <p className="text-2xl md:text-3xl font-bold text-gray-900">500+</p>
+              <p className="text-sm text-gray-700">Happy Clients</p>
+            </div>
+            <div>
+              <p className="text-2xl md:text-3xl font-bold text-gray-900">70+</p>
+              <p className="text-sm text-gray-700">Community Members</p>
+            </div>
+            <div>
+              <p className="text-2xl md:text-3xl font-bold text-gray-900">5★</p>
+              <p className="text-sm text-gray-700">Average Rating</p>
+            </div>
           </div>
         </div>
       </section>
