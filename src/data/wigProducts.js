@@ -1,4 +1,4 @@
-// Video files go in public/videos/ - use paths like /videos/filename.mp4
+// Video files in public/videos/ - each product has its own video (no duplicates)
 const VIDEO_BASE = '/videos'
 
 export const wigCategories = [
@@ -78,7 +78,7 @@ export const wigProducts = [
     name: 'Full Closure Bob 12 Inches',
     categoryId: 'glueless',
     description: 'Human hair. Maintaining: Hair serum.',
-    video: `${VIDEO_BASE}/video5877251518637284394.mp4`,
+    video: `${VIDEO_BASE}/video5877251518637284424.mp4`,
     price: 35000,
     normalPrice: null,
     dealCode: 'FFS 47',
@@ -86,20 +86,20 @@ export const wigProducts = [
   },
   {
     id: '8',
-    name: 'Celebrity Fringe Wine',
+    name: 'Full Frontal Wine 10 Inches',
     categoryId: 'colored',
     description: 'Human hair 💯. Maintaining: Hair serum.',
-    video: `${VIDEO_BASE}/video5877251518637284396.mp4`,
-    price: 28500,
-    normalPrice: 35000,
-    dealCode: 'FFS 78',
+    video: `${VIDEO_BASE}/video5877251518637284425.mp4`,
+    price: 40000,
+    normalPrice: null,
+    dealCode: 'FFS 50',
   },
   {
     id: '9',
     name: 'Kim K Closure Silky Straight 30 Inches',
     categoryId: 'bone-straight',
     description: 'China high grade human hair blend. Hair serum.',
-    video: `${VIDEO_BASE}/video5877251518637284395.mp4`,
+    video: `${VIDEO_BASE}/video5877251518637284426.mp4`,
     price: 55000,
     normalPrice: 65000,
     dealCode: 'FFS 74',
@@ -109,11 +109,31 @@ export const wigProducts = [
     name: 'Full Closure DD Piano 20 Inches',
     categoryId: 'curly',
     description: 'Human hair. Maintaining: Hair serum.',
-    video: `${VIDEO_BASE}/video5877251518637284391.mp4`,
+    video: `${VIDEO_BASE}/video5877251518637284427.mp4`,
     price: 136500,
     normalPrice: 170000,
     dealCode: 'FFS 77',
     tag: 'Hot',
+  },
+  {
+    id: '11',
+    name: 'Full Frontal Two Tone Orange 10 Inches',
+    categoryId: 'colored',
+    description: 'Human hair 💯. Maintaining: Hair serum.',
+    video: `${VIDEO_BASE}/video5877251518637284428.mp4`,
+    price: 35000,
+    normalPrice: null,
+    dealCode: 'FFS 59',
+  },
+  {
+    id: '12',
+    name: '13by3 Zara Straight Orange',
+    categoryId: 'bone-straight',
+    description: 'Maintaining: Hair serum.',
+    video: `${VIDEO_BASE}/video5877251518637284429.mp4`,
+    price: 40000,
+    normalPrice: null,
+    dealCode: 'FFS 32',
   },
 ]
 
@@ -127,9 +147,9 @@ export function getProductsByCategory(categoryId) {
 }
 
 export function getFeaturedProducts() {
-  return wigProducts.filter((p) => p.tag).slice(0, 6)
+  return wigProducts.filter((p) => p.tag).slice(0, 8)
 }
 
 export function getGalleryProducts() {
-  return wigProducts.slice(0, 6)
+  return wigProducts.slice(0, 8)
 }
