@@ -20,7 +20,10 @@ body {
   display: none;
 }
 
-/* Hero: prevent text ghosting / double render */
+/* Hero: prevent text ghosting, crisp text on gradient overlay */
+[data-hero] {
+  isolation: isolate;
+}
 [data-hero] h1,
 [data-hero] p,
 [data-hero] button,
