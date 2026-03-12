@@ -98,7 +98,7 @@ export default function Product() {
         </button>
       </div>
       <p className="text-center text-xs text-gray-500 px-4 py-2">
-        Screenshot the hair you want with the price and send to 08116500217 (WhatsApp).
+        All payments in Naira. Pay to Nigeria account: <strong>8116500217</strong>. Screenshot the hair you want with the price and send to 08116500217 (WhatsApp).
       </p>
 
       {/* More to explore - thumbnail strip like reference */}

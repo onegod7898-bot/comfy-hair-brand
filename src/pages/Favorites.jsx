@@ -56,7 +56,7 @@ export default function Favorites() {
                 </div>
                 <div className="p-3">
                   <p className="text-sm font-medium text-gray-900 truncate">{p.name}</p>
-                  <p className="text-sm font-semibold text-primary">${p.price}</p>
+                  <p className="text-sm font-semibold text-primary">₦{p.price.toLocaleString()}</p>
                 </div>
               </button>
             ))}

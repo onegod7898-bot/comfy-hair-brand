@@ -94,6 +94,9 @@ export default function Bag() {
                 <span>₦{total.toLocaleString()}</span>
               </div>
             </div>
+            <p className="text-xs text-gray-600 mt-2">
+              All payments in Naira. Pay to Nigeria account: <strong>8116500217</strong>.
+            </p>
 
             <button
               type="button"

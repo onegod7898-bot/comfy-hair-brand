@@ -3,7 +3,7 @@ export default function Contact() {
     <div className="max-w-3xl mx-auto px-4 py-12 md:py-16">
       <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">Contact Us</h1>
       <p className="text-gray-600 mb-6">
-        Have questions or want to order? Reach out through any of these channels.
+        Have questions or want to order? All prices are in Naira. Pay to Nigeria account: <strong>8116500217</strong>. Reach out through any of these channels.
       </p>
       <div className="space-y-4">
         <a
@@ -15,6 +15,11 @@ export default function Contact() {
           <span className="font-medium text-gray-900">WhatsApp</span>
           <span className="text-gray-600 block text-sm">+234 811 650 0217</span>
         </a>
+        <div className="p-4 rounded-lg border border-gray-200 bg-amber-50/50">
+          <span className="font-medium text-gray-900">Nigeria Pay (Bank / USSD)</span>
+          <span className="text-gray-700 block text-sm mt-1">Account: <strong>8116500217</strong></span>
+          <span className="text-gray-600 block text-xs mt-0.5">All payments in Naira (₦)</span>
+        </div>
         <a
           href="mailto:Comfortoluwaseunoyedele@gmail.com"
           className="block p-4 rounded-lg border border-gray-200 bg-white hover:border-gray-300 hover:shadow-md transition-all"

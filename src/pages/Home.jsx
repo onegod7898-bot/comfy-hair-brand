@@ -14,38 +14,23 @@ export default function Home() {
 
   return (
     <div>
-      {/* Hero with background image - solid overlay so text is crisp, no ghosting */}
-      <section
-        data-hero
-        className="relative min-h-[85vh] md:min-h-[90vh] flex flex-col justify-between py-12 md:py-20 px-4 overflow-hidden"
-        style={{
-          backgroundImage: 'url(/hero-bg.png)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat',
-        }}
-      >
-        {/* Solid overlay: left side opaque for text, right fades to show image */}
-        <div
-          className="absolute inset-0 z-0"
-          style={{
-            background: 'linear-gradient(90deg, rgba(250,248,245,0.97) 0%, rgba(250,248,245,0.85) 45%, transparent 70%)',
-          }}
-        />
-        <div className="relative z-10 max-w-6xl mx-auto w-full flex flex-col min-h-[70vh]">
-          <div className="max-w-xl">
-            <p className="text-sm md:text-base text-gray-600 font-medium mb-2">✨ Your Hair, Your Crown</p>
-            <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-4 leading-tight" style={{ textShadow: 'none' }}>
+      {/* Hero: solid left panel (crystal-clear text) + background image on right only */}
+      <section data-hero className="relative min-h-[85vh] md:min-h-[90vh] flex overflow-hidden">
+        {/* Left: solid panel - all text here, no image behind */}
+        <div className="w-full md:w-[55%] lg:w-[50%] bg-[#faf8f5] flex flex-col justify-between py-12 md:py-16 px-6 md:pl-12 lg:pl-16 pr-4">
+          <div>
+            <p className="text-sm md:text-base text-[#c2415c] font-semibold mb-2">✨ Your Hair, Your Crown</p>
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 leading-tight tracking-tight">
               Luxury Wigs Without the Luxury Price
             </h1>
-            <p className="text-gray-600 text-lg mb-8 leading-relaxed">
+            <p className="text-gray-600 text-base md:text-lg mb-8 leading-relaxed max-w-lg">
               Affordable. Stylish. Confidence in Every Strand. Transform your look with premium quality wigs crafted for everyday queens.
             </p>
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-wrap gap-3">
               <button
                 type="button"
                 onClick={() => navigate('/shop')}
-                className="px-6 py-3 bg-gray-900 text-white font-medium rounded hover:bg-gray-800 transition-colors"
+                className="px-6 py-3 bg-gray-900 text-white text-sm font-semibold rounded hover:bg-gray-800 transition-colors"
               >
                 Shop Now →
               </button>
@@ -53,13 +38,13 @@ export default function Home() {
                 href="https://wa.me/2348116500217"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-6 py-3 border-2 border-gray-900 text-gray-900 font-medium rounded hover:bg-gray-900 hover:text-white transition-colors"
+                className="px-6 py-3 bg-white border-2 border-gray-900 text-gray-900 text-sm font-semibold rounded hover:bg-gray-900 hover:text-white transition-colors"
               >
                 Book Appointment
               </a>
             </div>
           </div>
-          <div className="mt-auto pt-10 grid grid-cols-3 gap-6 max-w-md">
+          <div className="grid grid-cols-3 gap-4 md:gap-6 pt-8 mt-8 border-t border-gray-200">
             <div>
               <p className="text-2xl md:text-3xl font-bold text-gray-900">500+</p>
               <p className="text-sm text-gray-600">Happy Clients</p>
@@ -74,6 +59,16 @@ export default function Home() {
             </div>
           </div>
         </div>
+        {/* Right: background image only - no text on top */}
+        <div
+          className="hidden md:block absolute right-0 top-0 bottom-0 w-[45%] lg:w-[50%] bg-gray-200"
+          style={{
+            backgroundImage: 'url(/hero-bg.png)',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center left',
+            backgroundRepeat: 'no-repeat',
+          }}
+        />
       </section>
 
       <div className="max-w-6xl mx-auto px-4 py-12 md:py-16">

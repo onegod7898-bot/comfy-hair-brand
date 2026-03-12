@@ -3,17 +3,16 @@ import { useNavigate } from 'react-router-dom'
 import { useCart } from '../context/CartContext'
 
 const paymentMethods = [
-  { id: 'card', name: 'Credit / Debit Card' },
-  { id: 'paypal', name: 'PayPal' },
-  { id: 'apple', name: 'Apple Pay' },
-  { id: 'google', name: 'Google Pay' },
+  { id: 'nigeria-pay', name: 'Nigeria Pay (Bank / USSD)' },
+  { id: 'transfer', name: 'Bank Transfer' },
 ]
+const NIGERIA_PAY_ACCOUNT = '8116500217'
 
 export default function Checkout() {
   const navigate = useNavigate()
   const { items, total, clearCart } = useCart()
   const [step, setStep] = useState(1)
-  const [payment, setPayment] = useState('card')
+  const [payment, setPayment] = useState('nigeria-pay')
 
   const subtotal = items.reduce((sum, i) => sum + i.price * i.qty, 0)
   const shipping = 0
@@ -121,31 +120,11 @@ export default function Checkout() {
                 </label>
               ))}
             </div>
-            {payment === 'card' && (
-              <div className="mt-4 space-y-3">
-                <button
-                  type="button"
-                  className="text-sm text-primary font-medium"
-                >
-                  + Add new card
-                </button>
-                <input
-                  type="text"
-                  placeholder="Card number"
-                  className="w-full px-4 py-3 border border-gray-200 rounded-card text-sm"
-                />
-                <div className="grid grid-cols-2 gap-3">
-                  <input
-                    type="text"
-                    placeholder="MM/YY"
-                    className="w-full px-4 py-3 border border-gray-200 rounded-card text-sm"
-                  />
-                  <input
-                    type="text"
-                    placeholder="CVC"
-                    className="w-full px-4 py-3 border border-gray-200 rounded-card text-sm"
-                  />
-                </div>
+            {(payment === 'nigeria-pay' || payment === 'transfer') && (
+              <div className="mt-4 p-4 rounded-lg bg-amber-50 border border-amber-200">
+                <p className="text-sm font-medium text-gray-900">Pay to Nigeria account</p>
+                <p className="text-xl font-bold text-gray-900 mt-1">{NIGERIA_PAY_ACCOUNT}</p>
+                <p className="text-xs text-gray-600 mt-1">All amounts in Naira (₦). After payment, send proof via WhatsApp to confirm your order.</p>
               </div>
             )}
           </div>
@@ -158,30 +137,31 @@ export default function Checkout() {
               {items.map((i) => (
                 <li key={i.id} className="flex justify-between text-sm">
                   <span className="text-gray-700">{i.name} × {i.qty}</span>
-                  <span>${i.price * i.qty}</span>
+                  <span>₦{(i.price * i.qty).toLocaleString()}</span>
                 </li>
               ))}
             </ul>
             <div className="border-t border-gray-200 pt-3 space-y-2">
               <div className="flex justify-between text-sm text-gray-600">
                 <span>Subtotal</span>
-                <span>${subtotal}</span>
+                <span>₦{subtotal.toLocaleString()}</span>
               </div>
               <div className="flex justify-between text-sm text-gray-600">
                 <span>Shipping</span>
-                <span>{shipping === 0 ? 'Free' : `$${shipping}`}</span>
+                <span>{shipping === 0 ? 'Free' : `₦${shipping.toLocaleString()}`}</span>
               </div>
               {discount > 0 && (
                 <div className="flex justify-between text-sm text-green-600">
                   <span>Discount</span>
-                  <span>−${discount}</span>
+                  <span>−₦{discount.toLocaleString()}</span>
                 </div>
               )}
               <div className="flex justify-between font-semibold text-gray-900 pt-2">
                 <span>Total</span>
-                <span>${total}</span>
+                <span>₦{total.toLocaleString()}</span>
               </div>
             </div>
+            <p className="text-xs text-gray-600 mt-2">Pay to Nigeria account: <strong>{NIGERIA_PAY_ACCOUNT}</strong>. All amounts in Naira.</p>
             <button
               type="button"
               onClick={handleConfirmOrder}
