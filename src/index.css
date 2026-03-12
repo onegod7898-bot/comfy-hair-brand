@@ -19,3 +19,12 @@ body {
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
+
+/* Hero: prevent text ghosting / double render */
+[data-hero] h1,
+[data-hero] p,
+[data-hero] button,
+[data-hero] a {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}

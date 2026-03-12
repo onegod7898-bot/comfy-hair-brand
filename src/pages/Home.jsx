@@ -14,9 +14,10 @@ export default function Home() {
 
   return (
     <div>
-      {/* Hero with background image - like reference */}
+      {/* Hero with background image - solid overlay so text is crisp, no ghosting */}
       <section
-        className="relative min-h-[85vh] md:min-h-[90vh] flex flex-col justify-between bg-gray-900 py-12 md:py-20 px-4"
+        data-hero
+        className="relative min-h-[85vh] md:min-h-[90vh] flex flex-col justify-between py-12 md:py-20 px-4 overflow-hidden"
         style={{
           backgroundImage: 'url(/hero-bg.png)',
           backgroundSize: 'cover',
@@ -24,49 +25,52 @@ export default function Home() {
           backgroundRepeat: 'no-repeat',
         }}
       >
-        {/* Overlay for text readability */}
-        <div className="absolute inset-0 bg-gradient-to-r from-white/85 via-white/60 to-transparent" aria-hidden />
+        {/* Solid overlay: left side opaque for text, right fades to show image */}
+        <div
+          className="absolute inset-0 z-0"
+          style={{
+            background: 'linear-gradient(90deg, rgba(250,248,245,0.97) 0%, rgba(250,248,245,0.85) 45%, transparent 70%)',
+          }}
+        />
         <div className="relative z-10 max-w-6xl mx-auto w-full flex flex-col min-h-[70vh]">
-          <div className="max-w-xl text-left">
-            <p className="text-sm md:text-base text-gray-700 font-medium mb-2">✨ Your Hair, Your Crown</p>
-            <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-4">
+          <div className="max-w-xl">
+            <p className="text-sm md:text-base text-gray-600 font-medium mb-2">✨ Your Hair, Your Crown</p>
+            <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-4 leading-tight" style={{ textShadow: 'none' }}>
               Luxury Wigs Without the Luxury Price
             </h1>
-            <p className="text-gray-700 text-lg mb-8">
+            <p className="text-gray-600 text-lg mb-8 leading-relaxed">
               Affordable. Stylish. Confidence in Every Strand. Transform your look with premium quality wigs crafted for everyday queens.
             </p>
             <div className="flex flex-wrap gap-4">
               <button
                 type="button"
                 onClick={() => navigate('/shop')}
-                className="px-6 py-3 bg-gray-900 text-white font-medium rounded hover:bg-gray-800 transition-colors inline-flex items-center gap-2"
+                className="px-6 py-3 bg-gray-900 text-white font-medium rounded hover:bg-gray-800 transition-colors"
               >
-                Shop Now
-                <span aria-hidden>→</span>
+                Shop Now →
               </button>
               <a
                 href="https://wa.me/2348116500217"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-6 py-3 border-2 border-gray-900 text-gray-900 font-medium rounded hover:bg-gray-900 hover:text-white transition-colors inline-flex items-center gap-2"
+                className="px-6 py-3 border-2 border-gray-900 text-gray-900 font-medium rounded hover:bg-gray-900 hover:text-white transition-colors"
               >
-                📅 Book Appointment
+                Book Appointment
               </a>
             </div>
           </div>
-          {/* Stats - bottom left of hero */}
-          <div className="mt-auto pt-8 grid grid-cols-3 gap-6 text-left max-w-md">
+          <div className="mt-auto pt-10 grid grid-cols-3 gap-6 max-w-md">
             <div>
               <p className="text-2xl md:text-3xl font-bold text-gray-900">500+</p>
-              <p className="text-sm text-gray-700">Happy Clients</p>
+              <p className="text-sm text-gray-600">Happy Clients</p>
             </div>
             <div>
               <p className="text-2xl md:text-3xl font-bold text-gray-900">70+</p>
-              <p className="text-sm text-gray-700">Community Members</p>
+              <p className="text-sm text-gray-600">Community Members</p>
             </div>
             <div>
               <p className="text-2xl md:text-3xl font-bold text-gray-900">5★</p>
-              <p className="text-sm text-gray-700">Average Rating</p>
+              <p className="text-sm text-gray-600">Average Rating</p>
             </div>
           </div>
         </div>
