@@ -22,9 +22,13 @@ export default function Layout() {
           <button
             type="button"
             onClick={() => navigate('/')}
-            className="text-lg md:text-xl font-bold text-gray-900 tracking-tight"
+            className="flex items-center gap-2 shrink-0"
           >
-            Comfy Hair Brand
+            <img
+              src="/logo.png"
+              alt="Comfy Hair Brand"
+              className="h-8 md:h-10 w-auto object-contain"
+            />
           </button>
           <nav className="hidden md:flex items-center gap-6">
             {navLinks.map(({ path, label }) => {

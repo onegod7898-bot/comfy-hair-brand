@@ -1,9 +1,9 @@
 import { useNavigate } from 'react-router-dom'
 import { useFavorites } from '../context/FavoritesContext'
 import {
-  wigCategories,
   getFeaturedProducts,
   getGalleryProducts,
+  getFirstProductPerCategory,
 } from '../data/wigProducts'
 
 export default function Home() {
@@ -63,19 +63,36 @@ export default function Home() {
       </section>
 
       <div className="max-w-6xl mx-auto px-4 py-12 md:py-16">
-        {/* Wig category cards */}
+        {/* Shop by style - filled with real product videos */}
         <section className="mb-12 md:mb-16">
           <h2 className="text-xl font-bold text-gray-900 mb-6">Shop by style</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 md:gap-6">
-            {wigCategories.map((cat) => (
+            {getFirstProductPerCategory().map(({ category: cat, product }) => (
               <button
                 key={cat.id}
                 type="button"
-                onClick={() => navigate(`/shop?cat=${cat.id}`)}
+                onClick={() => navigate(product ? `/product/${product.id}` : `/shop?cat=${cat.id}`)}
                 className="rounded-xl overflow-hidden border border-gray-200 bg-white shadow-sm hover:border-gray-300 hover:shadow-md transition-all text-left"
               >
-                <div className="aspect-[3/4] bg-gray-100 flex items-center justify-center text-4xl">
-                  ✨
+                <div className="aspect-[3/4] bg-black relative">
+                  {product ? (
+                    <video
+                      src={product.video}
+                      className="w-full h-full object-cover"
+                      muted
+                      loop
+                      playsInline
+                      autoPlay
+                      preload="metadata"
+                    />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center text-4xl">✨</div>
+                  )}
+                  {product && (
+                    <span className="absolute bottom-2 left-2 right-2 bg-white/95 px-2 py-1 rounded text-sm font-semibold text-gray-900">
+                      ₦{product.price.toLocaleString()}
+                    </span>
+                  )}
                 </div>
                 <div className="p-4">
                   <h3 className="font-semibold text-gray-900">{cat.name}</h3>

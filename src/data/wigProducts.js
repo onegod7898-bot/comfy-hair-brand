@@ -157,3 +157,11 @@ export function getGalleryProducts() {
 export function getOtherProducts(currentId, limit = 6) {
   return wigProducts.filter((p) => p.id !== currentId).slice(0, limit)
 }
+
+/** First product in each category - for Shop by style category cards */
+export function getFirstProductPerCategory() {
+  return wigCategories.map((cat) => ({
+    category: cat,
+    product: wigProducts.find((p) => p.categoryId === cat.id) || null,
+  }))
+}
