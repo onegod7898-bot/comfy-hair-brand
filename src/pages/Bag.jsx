@@ -11,7 +11,7 @@ export default function Bag() {
     <div className="pb-6">
       <header className="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-gray-100">
         <div className="flex items-center justify-between px-4 h-14">
-          <h1 className="text-lg font-semibold text-gray-900">Bag</h1>
+          <h1 className="text-lg font-semibold text-gray-900">Cart</h1>
         </div>
       </header>
 
@@ -21,7 +21,7 @@ export default function Bag() {
             <div className="w-32 h-32 mx-auto mb-4 rounded-full bg-gray-100 flex items-center justify-center text-5xl">
               🛒
             </div>
-            <p className="text-gray-700 font-medium">Your bag is empty</p>
+            <p className="text-gray-700 font-medium">Your cart is empty</p>
             <p className="text-sm text-gray-500 mt-1">Add items to get started</p>
             <button
               type="button"

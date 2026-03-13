@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom'
 import { useCart } from '../context/CartContext'
 import { useFavorites } from '../context/FavoritesContext'
 import { getProductById, getOtherProducts } from '../data/wigProducts'
+import { notifyCart } from '../services/notify'
 
 export default function Product() {
   const { id } = useParams()
@@ -23,7 +24,7 @@ export default function Product() {
     )
   }
 
-  const addToBag = () => {
+  const addToCart = () => {
     addItem({
       id: product.id,
       name: product.name,
@@ -32,6 +33,7 @@ export default function Product() {
     })
     setAdded(true)
     setTimeout(() => setAdded(false), 2000)
+    notifyCart([{ name: product.name, price: product.price, qty: 1 }])
   }
 
   return (
@@ -79,7 +81,7 @@ export default function Product() {
         </button>
       </div>
 
-      {/* Actions bar - Chat + Add to bag */}
+      {/* Actions bar - Chat + Add to cart */}
       <div className="sticky bottom-0 left-0 right-0 z-10 bg-white border-t border-gray-200 p-4 flex flex-wrap gap-3">
         <a
           href="https://wa.me/2348116500217"
@@ -91,10 +93,10 @@ export default function Product() {
         </a>
         <button
           type="button"
-          onClick={addToBag}
+          onClick={addToCart}
           className="flex-1 min-w-[140px] px-4 py-3 rounded-full bg-gray-900 text-white font-medium hover:bg-gray-800 transition-colors"
         >
-          {added ? 'Added to bag' : 'Add to bag'}
+          {added ? 'Added to cart' : 'Add to cart'}
         </button>
       </div>
       <p className="text-center text-xs text-gray-500 px-4 py-2">

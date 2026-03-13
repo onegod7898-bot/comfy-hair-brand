@@ -30,7 +30,8 @@ export default function App() {
         <Route path="gallery" element={<Gallery />} />
         <Route path="contact" element={<Contact />} />
         <Route path="product/:id" element={<Product />} />
-        <Route path="bag" element={<Bag />} />
+        <Route path="cart" element={<Bag />} />
+        <Route path="bag" element={<Navigate to="/cart" replace />} />
         <Route path="checkout" element={<Checkout />} />
         <Route path="order-success" element={<OrderSuccess />} />
         <Route path="profile" element={<Profile />} />

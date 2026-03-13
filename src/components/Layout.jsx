@@ -50,7 +50,7 @@ export default function Layout() {
           <div className="flex items-center gap-2">
             <button
               type="button"
-              onClick={() => navigate('/bag')}
+              onClick={() => navigate('/cart')}
               className="p-2 text-gray-600 hover:text-gray-900 relative"
               aria-label="Cart"
             >

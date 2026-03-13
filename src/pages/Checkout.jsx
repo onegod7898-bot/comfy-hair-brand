@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useCart } from '../context/CartContext'
+import { notifyOrder } from '../services/notify'
 
 const paymentMethods = [
   { id: 'nigeria-pay', name: 'Nigeria Pay (Bank / USSD)' },
@@ -19,8 +20,9 @@ export default function Checkout() {
   const discount = 0
 
   const handleConfirmOrder = () => {
+    notifyOrder(items, total)
     clearCart()
-    navigate('/order-success')
+    navigate('/order-success', { state: { items: [...items], total } })
   }
 
   return (
@@ -29,7 +31,7 @@ export default function Checkout() {
         <div className="flex items-center justify-between px-4 h-14">
           <button
             type="button"
-            onClick={() => (step > 1 ? setStep(step - 1) : navigate('/bag'))}
+            onClick={() => (step > 1 ? setStep(step - 1) : navigate('/cart'))}
             className="p-2 -ml-2 text-gray-600"
             aria-label="Back"
           >
