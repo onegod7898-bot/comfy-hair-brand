@@ -14,7 +14,7 @@ export default function Home() {
 
   return (
     <div>
-      {/* Hero — image bold and straight, gradient only on left for text */}
+      {/* Hero — full image visible (transparent), no white block; text has shadow so it shows */}
       <section
         data-hero
         className="relative min-h-[85vh] md:min-h-[90vh] flex flex-col justify-end md:justify-between overflow-hidden"
@@ -23,25 +23,25 @@ export default function Home() {
           backgroundSize: 'cover',
           backgroundPosition: 'center center',
           backgroundRepeat: 'no-repeat',
-          backgroundAttachment: 'scroll',
         }}
       >
+        {/* Very light tint only on far left so text shows; rest fully transparent = full image */}
         <div
           className="absolute inset-0 z-0"
           style={{
-            background: 'linear-gradient(90deg, rgba(250,249,247,0.97) 0%, rgba(250,249,247,0.92) 38%, rgba(250,249,247,0.35) 55%, transparent 72%)',
+            background: 'linear-gradient(90deg, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.08) 28%, transparent 48%)',
           }}
           aria-hidden
         />
         <div className="relative z-10 max-w-6xl mx-auto w-full px-4 sm:px-6 py-14 md:py-20 flex flex-col min-h-[70vh] justify-between">
           <div className="max-w-xl">
-            <p className="text-xs uppercase tracking-section text-accent font-semibold mb-3">
+            <p className="text-xs uppercase tracking-section text-accent font-semibold mb-3 drop-shadow-[0_1px_2px_rgba(255,255,255,0.9)]">
               Your Hair, Your Crown
             </p>
-            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-semibold text-primary leading-[1.1] tracking-tight">
+            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-semibold text-white leading-[1.1] tracking-tight drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]" style={{ textShadow: '0 2px 12px rgba(0,0,0,0.6), 0 0 24px rgba(0,0,0,0.3)' }}>
               Luxury Wigs Without the Luxury Price
             </h1>
-            <p className="text-charcoal/80 text-base md:text-lg mt-6 leading-relaxed max-w-lg">
+            <p className="text-white/95 text-base md:text-lg mt-6 leading-relaxed max-w-lg drop-shadow-[0_1px_4px_rgba(0,0,0,0.5)]" style={{ textShadow: '0 1px 6px rgba(0,0,0,0.6)' }}>
               Affordable. Stylish. Confidence in Every Strand. Transform your look with premium quality wigs crafted for everyday queens.
             </p>
             <div className="flex flex-wrap gap-4 mt-8">
@@ -56,24 +56,24 @@ export default function Home() {
                 href="https://wa.me/2348116500217"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-7 py-3.5 bg-white border-2 border-primary text-primary font-semibold rounded-pill hover:bg-primary hover:text-white transition-all duration-200"
+                className="px-7 py-3.5 bg-white/95 border-2 border-white text-primary font-semibold rounded-pill hover:bg-white hover:border-white transition-all duration-200 shadow-[0_2px_8px_rgba(0,0,0,0.2)]"
               >
                 Book Appointment
               </a>
             </div>
           </div>
-          <div className="grid grid-cols-3 gap-6 md:gap-8 pt-10 mt-10 border-t border-sand max-w-md">
+          <div className="grid grid-cols-3 gap-6 md:gap-8 pt-10 mt-10 border-t border-white/40 max-w-md">
             <div>
-              <p className="font-display text-3xl md:text-4xl font-semibold text-primary">500+</p>
-              <p className="text-sm text-charcoal/70 mt-0.5">Happy Clients</p>
+              <p className="font-display text-3xl md:text-4xl font-semibold text-white drop-shadow-[0_2px_6px_rgba(0,0,0,0.5)]">500+</p>
+              <p className="text-sm text-white/90 mt-0.5 drop-shadow-[0_1px_2px_rgba(0,0,0,0.4)]">Happy Clients</p>
             </div>
             <div>
-              <p className="font-display text-3xl md:text-4xl font-semibold text-primary">70+</p>
-              <p className="text-sm text-charcoal/70 mt-0.5">Community Members</p>
+              <p className="font-display text-3xl md:text-4xl font-semibold text-white drop-shadow-[0_2px_6px_rgba(0,0,0,0.5)]">70+</p>
+              <p className="text-sm text-white/90 mt-0.5 drop-shadow-[0_1px_2px_rgba(0,0,0,0.4)]">Community Members</p>
             </div>
             <div>
-              <p className="font-display text-3xl md:text-4xl font-semibold text-primary">5★</p>
-              <p className="text-sm text-charcoal/70 mt-0.5">Average Rating</p>
+              <p className="font-display text-3xl md:text-4xl font-semibold text-white drop-shadow-[0_2px_6px_rgba(0,0,0,0.5)]">5★</p>
+              <p className="text-sm text-white/90 mt-0.5 drop-shadow-[0_1px_2px_rgba(0,0,0,0.4)]">Average Rating</p>
             </div>
           </div>
         </div>
