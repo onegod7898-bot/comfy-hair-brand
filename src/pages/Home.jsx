@@ -14,21 +14,22 @@ export default function Home() {
 
   return (
     <div>
-      {/* Hero — your image (mannequin/wig), gradient keeps text clear, no ghosting */}
+      {/* Hero — image bold and straight, gradient only on left for text */}
       <section
         data-hero
         className="relative min-h-[85vh] md:min-h-[90vh] flex flex-col justify-end md:justify-between overflow-hidden"
         style={{
           backgroundImage: 'url(/hero-bg.png)',
           backgroundSize: 'cover',
-          backgroundPosition: 'center',
+          backgroundPosition: 'center center',
           backgroundRepeat: 'no-repeat',
+          backgroundAttachment: 'scroll',
         }}
       >
         <div
           className="absolute inset-0 z-0"
           style={{
-            background: 'linear-gradient(90deg, rgba(250,249,247,0.98) 0%, rgba(250,249,247,0.9) 45%, rgba(250,249,247,0.55) 65%, transparent 85%)',
+            background: 'linear-gradient(90deg, rgba(250,249,247,0.97) 0%, rgba(250,249,247,0.92) 38%, rgba(250,249,247,0.35) 55%, transparent 72%)',
           }}
           aria-hidden
         />
