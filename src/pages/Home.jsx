@@ -14,21 +14,21 @@ export default function Home() {
 
   return (
     <div>
-      {/* Hero */}
+      {/* Hero — related luxury hair image, gradient keeps text clear */}
       <section
         data-hero
         className="relative min-h-[85vh] md:min-h-[90vh] flex flex-col justify-end md:justify-between overflow-hidden"
         style={{
-          backgroundImage: 'url(/hero-bg.png)',
+          backgroundImage: 'url(https://images.unsplash.com/photo-1560066984-138dadb4c035?w=1400&q=85)',
           backgroundSize: 'cover',
-          backgroundPosition: 'center',
+          backgroundPosition: 'center right',
           backgroundRepeat: 'no-repeat',
         }}
       >
         <div
           className="absolute inset-0 z-0"
           style={{
-            background: 'linear-gradient(90deg, rgba(250,249,247,0.96) 0%, rgba(250,249,247,0.85) 40%, rgba(250,249,247,0.4) 60%, transparent 80%)',
+            background: 'linear-gradient(90deg, rgba(250,249,247,0.97) 0%, rgba(250,249,247,0.88) 42%, rgba(250,249,247,0.5) 62%, transparent 82%)',
           }}
           aria-hidden
         />
