@@ -7,21 +7,32 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: '#2563eb',
-        'primary-dark': '#1d4ed8',
-        accent: '#fbbf24',
-        'accent-hover': '#f59e0b',
+        primary: '#1a1a1a',
+        'primary-dark': '#0d0d0d',
+        accent: '#b76e79',
+        'accent-light': '#e8d4d7',
+        cream: '#faf9f7',
+        'cream-dark': '#f2f0ec',
+        charcoal: '#2d2d2d',
+        sand: '#e8e6e3',
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
+        sans: ['DM Sans', 'system-ui', 'sans-serif'],
+        display: ['Cormorant Garamond', 'Georgia', 'serif'],
       },
       borderRadius: {
         'pill': '9999px',
         'card': '1rem',
+        'card-lg': '1.25rem',
       },
       boxShadow: {
-        'nav': '0 -2px 10px rgba(0,0,0,0.08)',
-        'card': '0 2px 8px rgba(0,0,0,0.06)',
+        'soft': '0 2px 12px rgba(0,0,0,0.06)',
+        'card': '0 4px 20px rgba(0,0,0,0.06)',
+        'card-hover': '0 12px 40px rgba(0,0,0,0.1)',
+        'nav': '0 1px 0 rgba(0,0,0,0.06)',
+      },
+      letterSpacing: {
+        'section': '0.2em',
       },
     },
   },

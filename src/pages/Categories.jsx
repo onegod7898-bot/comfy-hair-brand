@@ -10,15 +10,16 @@ export default function Categories() {
   const products = getProductsByCategory(category)
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-8 md:py-12">
-      <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">Shop Wigs</h1>
-      <p className="text-gray-600 mb-6">Browse by category. All products show video and price.</p>
-      <div className="flex flex-wrap gap-2 mb-8">
+    <div className="max-w-6xl mx-auto px-4 sm:px-6 py-10 md:py-16">
+      <p className="text-xs uppercase tracking-section text-accent font-semibold mb-2">Shop</p>
+      <h1 className="font-display text-3xl md:text-4xl font-semibold text-primary mb-2">Shop Wigs</h1>
+      <p className="text-charcoal/70 mb-8 max-w-xl">Browse by category. All products show video and price.</p>
+      <div className="flex flex-wrap gap-2 mb-10">
         <button
           type="button"
           onClick={() => navigate('/shop')}
-          className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
-            category === 'all' ? 'bg-gray-900 text-white' : 'bg-white border border-gray-200 text-gray-700 hover:border-gray-300'
+          className={`px-5 py-2.5 rounded-pill text-sm font-semibold transition-all duration-200 ${
+            category === 'all' ? 'bg-primary text-white shadow-soft' : 'bg-white border border-sand text-charcoal hover:border-charcoal/30 hover:bg-cream-dark'
           }`}
         >
           All
@@ -28,26 +29,26 @@ export default function Categories() {
             key={c.id}
             type="button"
             onClick={() => navigate(`/shop?cat=${c.id}`)}
-            className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
-              category === c.id ? 'bg-gray-900 text-white' : 'bg-white border border-gray-200 text-gray-700 hover:border-gray-300'
+            className={`px-5 py-2.5 rounded-pill text-sm font-semibold transition-all duration-200 ${
+              category === c.id ? 'bg-primary text-white shadow-soft' : 'bg-white border border-sand text-charcoal hover:border-charcoal/30 hover:bg-cream-dark'
             }`}
           >
             {c.name.replace(' Wigs', '')}
           </button>
         ))}
       </div>
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5 md:gap-6">
         {products.map((p) => (
           <button
             key={p.id}
             type="button"
             onClick={() => navigate(`/product/${p.id}`)}
-            className="text-left rounded-xl overflow-hidden border border-gray-200 bg-white shadow-sm hover:border-gray-300 hover:shadow-md transition-all"
+            className="group text-left rounded-card-lg overflow-hidden bg-white border border-sand shadow-card card-lift"
           >
-            <div className="relative aspect-[3/4] bg-black">
+            <div className="relative aspect-[3/4] bg-primary overflow-hidden">
               <video
                 src={p.video}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 muted
                 loop
                 playsInline
@@ -55,26 +56,26 @@ export default function Categories() {
                 preload="metadata"
               />
               {p.tag && (
-                <span className="absolute top-2 left-2 bg-pink-500 text-white text-xs font-medium px-2 py-0.5 rounded-full">
+                <span className="absolute top-3 left-3 bg-accent text-white text-xs font-semibold px-2.5 py-1 rounded-full uppercase tracking-wide">
                   {p.tag}
                 </span>
               )}
-              <span className="absolute top-2 right-2 bg-white/95 px-2 py-0.5 rounded text-sm font-semibold text-gray-900">
+              <span className="absolute top-3 right-3 bg-white/95 backdrop-blur-sm px-2.5 py-1.5 rounded-lg text-sm font-semibold text-primary shadow-soft">
                 ₦{p.price.toLocaleString()}
               </span>
               <button
                 type="button"
                 onClick={(e) => { e.stopPropagation(); toggle(p.id) }}
-                className="absolute bottom-2 right-2 w-8 h-8 rounded-full bg-white/90 flex items-center justify-center text-red-500"
+                className="absolute bottom-3 right-3 w-9 h-9 rounded-full bg-white/95 backdrop-blur-sm flex items-center justify-center text-accent shadow-soft hover:bg-white transition-colors"
                 aria-label={has(p.id) ? 'Remove from favorites' : 'Add to favorites'}
               >
                 {has(p.id) ? '❤️' : '🤍'}
               </button>
             </div>
-            <div className="p-3">
-              <p className="text-sm font-medium text-gray-900 truncate">{p.name}</p>
+            <div className="p-4">
+              <p className="text-sm font-medium text-primary truncate">{p.name}</p>
               {p.normalPrice && (
-                <p className="text-xs text-gray-500 line-through">₦{p.normalPrice.toLocaleString()}</p>
+                <p className="text-xs text-charcoal/50 line-through mt-0.5">₦{p.normalPrice.toLocaleString()}</p>
               )}
             </div>
           </button>

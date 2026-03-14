@@ -17,9 +17,9 @@ export default function Product() {
 
   if (!product) {
     return (
-      <div className="p-4">
-        <button type="button" onClick={() => navigate(-1)} className="text-gray-900 font-medium">← Back</button>
-        <p className="mt-4 text-gray-600">Product not found.</p>
+      <div className="max-w-6xl mx-auto px-4 py-12">
+        <button type="button" onClick={() => navigate(-1)} className="text-primary font-semibold hover:text-accent transition-colors">← Back</button>
+        <p className="mt-4 text-charcoal/70">Product not found.</p>
       </div>
     )
   }
@@ -37,18 +37,17 @@ export default function Product() {
   }
 
   return (
-    <div className="min-h-screen bg-[#faf8f5]">
+    <div className="min-h-screen bg-cream">
       <button
         type="button"
         onClick={() => navigate(-1)}
-        className="fixed top-4 left-4 z-20 p-2 rounded-full bg-white/90 text-gray-900 shadow-md hover:bg-white"
+        className="fixed top-4 left-4 z-20 p-3 rounded-full bg-white/95 backdrop-blur-sm text-primary shadow-card hover:shadow-card-hover hover:bg-white transition-all duration-200"
         aria-label="Back"
       >
         ←
       </button>
 
-      {/* Video first - full width, reference style */}
-      <div className="relative w-full aspect-[9/16] max-h-[85vh] bg-black">
+      <div className="relative w-full aspect-[9/16] max-h-[85vh] bg-primary">
         <video
           src={product.video}
           className="w-full h-full object-cover"
@@ -58,64 +57,62 @@ export default function Product() {
           autoPlay
           muted
         />
-        {/* Overlay info on video - like reference (bottom-left) */}
-        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 via-black/70 to-transparent pt-12 pb-4 px-4">
+        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/92 via-black/60 to-transparent pt-14 pb-5 px-5">
           {product.dealCode && (
-            <p className="text-white/90 text-sm font-medium">DEAL CODE::: ({product.dealCode})</p>
+            <p className="text-white/90 text-xs uppercase tracking-section font-semibold">Deal code — {product.dealCode}</p>
           )}
-          <h1 className="text-white text-lg md:text-xl font-bold mt-0.5">{product.name}</h1>
-          <p className="text-white/95 text-sm mt-0.5">{product.description}</p>
-          <p className="text-white/90 text-xs mt-1">Maintaining :: Hair serum</p>
-          <p className="text-white text-xl font-bold mt-2">₦{product.price.toLocaleString()}</p>
+          <h1 className="text-white font-display text-xl md:text-2xl font-semibold mt-1">{product.name}</h1>
+          <p className="text-white/90 text-sm mt-0.5">{product.description}</p>
+          <p className="text-white/80 text-xs mt-1">Maintaining :: Hair serum</p>
+          <p className="text-white font-display text-2xl font-semibold mt-3">₦{product.price.toLocaleString()}</p>
           {product.normalPrice && (
-            <p className="text-white/70 text-sm line-through">₦{product.normalPrice.toLocaleString()}</p>
+            <p className="text-white/60 text-sm line-through">₦{product.normalPrice.toLocaleString()}</p>
           )}
         </div>
         <button
           type="button"
           onClick={() => toggle(product.id)}
-          className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-white/90 flex items-center justify-center text-red-500"
+          className="absolute top-4 right-4 z-10 w-11 h-11 rounded-full bg-white/95 backdrop-blur-sm flex items-center justify-center text-accent shadow-card hover:bg-white transition-colors"
           aria-label={has(product.id) ? 'Remove from favorites' : 'Add to favorites'}
         >
           {has(product.id) ? '❤️' : '🤍'}
         </button>
       </div>
 
-      {/* Actions bar - Chat + Add to cart */}
-      <div className="sticky bottom-0 left-0 right-0 z-10 bg-white border-t border-gray-200 p-4 flex flex-wrap gap-3">
+      <div className="sticky bottom-0 left-0 right-0 z-10 bg-white border-t border-sand p-4 flex flex-wrap gap-3 shadow-[0_-4px_20px_rgba(0,0,0,0.06)]">
         <a
           href="https://wa.me/2348116500217"
           target="_blank"
           rel="noopener noreferrer"
-          className="flex-1 min-w-[140px] inline-flex items-center justify-center gap-2 px-4 py-3 rounded-full bg-[#22c55e] text-white font-medium hover:bg-[#1ea34e] transition-colors"
+          className="flex-1 min-w-[140px] inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-pill bg-[#22c55e] text-white font-semibold hover:opacity-95 transition-opacity"
         >
           💬 Chat with us
         </a>
         <button
           type="button"
           onClick={addToCart}
-          className="flex-1 min-w-[140px] px-4 py-3 rounded-full bg-gray-900 text-white font-medium hover:bg-gray-800 transition-colors"
+          className="flex-1 min-w-[140px] px-5 py-3.5 rounded-pill bg-primary text-white font-semibold hover:bg-primary-dark transition-colors shadow-soft"
         >
           {added ? 'Added to cart' : 'Add to cart'}
         </button>
       </div>
-      <p className="text-center text-xs text-gray-500 px-4 py-2">
-        All payments in Naira. Pay to Nigeria account: <strong>8116500217</strong>. Screenshot the hair you want with the price and send to 08116500217 (WhatsApp).
+      <p className="text-center text-xs text-charcoal/60 px-4 py-3 bg-cream-dark/50">
+        All payments in Naira. Pay to Nigeria account: <strong className="text-primary">8116500217</strong>. Screenshot the hair you want with the price and send to 08116500217 (WhatsApp).
       </p>
 
-      {/* More to explore - thumbnail strip like reference */}
       {otherProducts.length > 0 && (
-        <section className="px-4 py-6 pb-12">
-          <h2 className="text-lg font-bold text-gray-900 mb-4">More to explore</h2>
-          <div className="flex gap-3 overflow-x-auto scrollbar-hide -mx-4 px-4">
+        <section className="px-4 sm:px-6 py-8 pb-16 max-w-6xl mx-auto">
+          <p className="text-xs uppercase tracking-section text-accent font-semibold mb-2">More to explore</p>
+          <h2 className="font-display text-xl font-semibold text-primary mb-4">You might also like</h2>
+          <div className="flex gap-4 overflow-x-auto scrollbar-hide -mx-4 px-4">
             {otherProducts.map((p) => (
               <button
                 key={p.id}
                 type="button"
                 onClick={() => navigate(`/product/${p.id}`)}
-                className="flex-shrink-0 w-[120px] text-left rounded-lg overflow-hidden border border-gray-200 bg-white shadow-sm hover:border-gray-300 hover:shadow-md transition-all"
+                className="flex-shrink-0 w-[130px] text-left rounded-card-lg overflow-hidden border border-sand bg-white shadow-soft hover:shadow-card transition-all"
               >
-                <div className="aspect-[3/4] bg-black">
+                <div className="aspect-[3/4] bg-primary">
                   <video
                     src={p.video}
                     className="w-full h-full object-cover"
@@ -124,9 +121,9 @@ export default function Product() {
                     preload="metadata"
                   />
                 </div>
-                <div className="p-2">
-                  <p className="text-xs font-medium text-gray-900 truncate">{p.name}</p>
-                  <p className="text-xs text-gray-600">₦{p.price.toLocaleString()}</p>
+                <div className="p-2.5">
+                  <p className="text-xs font-medium text-primary truncate">{p.name}</p>
+                  <p className="text-xs text-charcoal/70">₦{p.price.toLocaleString()}</p>
                 </div>
               </button>
             ))}

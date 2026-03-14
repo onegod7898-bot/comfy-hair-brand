@@ -12,25 +12,24 @@ const navLinks = [
 export default function Layout() {
   const navigate = useNavigate()
   const location = useLocation()
-  const { count, total } = useCart()
+  const { count } = useCart()
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#faf8f5]">
-      {/* Top website navbar - like comfy-hair-design.vercel.app */}
-      <header className="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-gray-100">
-        <div className="max-w-6xl mx-auto px-4 flex items-center justify-between h-14 md:h-16">
+    <div className="min-h-screen flex flex-col bg-cream">
+      <header className="sticky top-0 z-50 bg-cream/95 backdrop-blur-md border-b border-sand shadow-nav">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16 md:h-[4.25rem]">
           <button
             type="button"
             onClick={() => navigate('/')}
-            className="flex items-center gap-2 shrink-0"
+            className="flex items-center gap-2 shrink-0 focus:outline-none focus:ring-2 focus:ring-accent/30 focus:ring-offset-2 rounded-lg"
           >
             <img
               src="/logo.png"
               alt="Comfy Hair Brand"
-              className="h-8 md:h-10 w-auto object-contain"
+              className="h-9 md:h-10 w-auto object-contain"
             />
           </button>
-          <nav className="hidden md:flex items-center gap-6">
+          <nav className="hidden md:flex items-center gap-8">
             {navLinks.map(({ path, label }) => {
               const isActive = path === '/' ? location.pathname === '/' : location.pathname.startsWith(path)
               return (
@@ -38,8 +37,8 @@ export default function Layout() {
                   key={path}
                   type="button"
                   onClick={() => navigate(path)}
-                  className={`text-sm font-medium transition-colors ${
-                    isActive ? 'text-gray-900' : 'text-gray-600 hover:text-gray-900'
+                  className={`text-sm font-medium tracking-wide transition-colors duration-200 ${
+                    isActive ? 'text-primary' : 'text-charcoal/70 hover:text-primary'
                   }`}
                 >
                   {label}
@@ -47,16 +46,16 @@ export default function Layout() {
               )
             })}
           </nav>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-3">
             <button
               type="button"
               onClick={() => navigate('/cart')}
-              className="p-2 text-gray-600 hover:text-gray-900 relative"
+              className="relative p-2.5 text-charcoal/80 hover:text-primary rounded-full hover:bg-cream-dark transition-colors duration-200"
               aria-label="Cart"
             >
-              <span className="text-xl">🛒</span>
+              <span className="text-xl" aria-hidden>🛒</span>
               {count > 0 && (
-                <span className="absolute -top-0.5 -right-0.5 min-w-[18px] h-[18px] bg-primary text-white text-xs font-bold rounded-full flex items-center justify-center">
+                <span className="absolute top-1 right-1 min-w-[18px] h-[18px] bg-accent text-white text-xs font-semibold rounded-full flex items-center justify-center">
                   {count}
                 </span>
               )}
@@ -64,14 +63,13 @@ export default function Layout() {
             <button
               type="button"
               onClick={() => navigate('/shop')}
-              className="ml-2 px-4 py-2 bg-gray-900 text-white text-sm font-medium rounded hover:bg-gray-800 transition-colors"
+              className="ml-1 px-5 py-2.5 bg-primary text-white text-sm font-semibold rounded-pill hover:bg-primary-dark transition-all duration-200 shadow-soft"
             >
               Shop Now
             </button>
           </div>
         </div>
-        {/* Mobile nav: compact menu */}
-        <div className="md:hidden flex items-center gap-2 overflow-x-auto px-4 pb-2 scrollbar-hide border-t border-gray-100">
+        <div className="md:hidden flex items-center gap-2 overflow-x-auto px-4 pb-3 pt-1 scrollbar-hide border-t border-sand/80">
           {navLinks.map(({ path, label }) => {
             const isActive = path === '/' ? location.pathname === '/' : location.pathname.startsWith(path)
             return (
@@ -79,8 +77,8 @@ export default function Layout() {
                 key={path}
                 type="button"
                 onClick={() => navigate(path)}
-                className={`shrink-0 px-3 py-1.5 rounded-full text-sm font-medium ${
-                  isActive ? 'bg-gray-900 text-white' : 'bg-gray-100 text-gray-700'
+                className={`shrink-0 px-4 py-2 rounded-pill text-sm font-medium transition-colors ${
+                  isActive ? 'bg-primary text-white' : 'bg-cream-dark text-charcoal hover:bg-sand'
                 }`}
               >
                 {label}
@@ -94,12 +92,39 @@ export default function Layout() {
         <Outlet />
       </main>
 
-      {/* Floating Chat button - like reference site */}
+      <footer className="border-t border-sand bg-cream-dark/50 mt-auto">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-10 md:py-12">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+            <div>
+              <p className="font-display text-xl font-semibold text-primary">Comfy Hair Brand</p>
+              <p className="text-sm text-charcoal/70 mt-1">Luxury wigs without the luxury price.</p>
+            </div>
+            <div className="flex flex-wrap gap-6 text-sm">
+              <button type="button" onClick={() => navigate('/shop')} className="text-charcoal/70 hover:text-primary transition-colors">
+                Shop
+              </button>
+              <button type="button" onClick={() => navigate('/about')} className="text-charcoal/70 hover:text-primary transition-colors">
+                About
+              </button>
+              <button type="button" onClick={() => navigate('/contact')} className="text-charcoal/70 hover:text-primary transition-colors">
+                Contact
+              </button>
+              <a href="https://wa.me/2348116500217" target="_blank" rel="noopener noreferrer" className="text-charcoal/70 hover:text-primary transition-colors">
+                WhatsApp
+              </a>
+            </div>
+          </div>
+          <p className="text-xs text-charcoal/50 mt-8 pt-6 border-t border-sand/50">
+            © {new Date().getFullYear()} Comfy Hair Brand. All rights reserved.
+          </p>
+        </div>
+      </footer>
+
       <a
         href="https://wa.me/2348116500217?text=Hello!%20I'm%20interested%20in%20Comfy%20Hair%20Brand%20wigs."
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-6 right-6 z-40 flex items-center gap-2 px-4 py-3 bg-[#22c55e] text-white text-sm font-medium rounded-full shadow-lg hover:bg-[#1ea34e] transition-colors"
+        className="fixed bottom-6 right-6 z-40 flex items-center gap-2 px-4 py-3 bg-[#22c55e] text-white text-sm font-semibold rounded-full shadow-card hover:shadow-card-hover hover:scale-105 transition-all duration-200"
       >
         <span aria-hidden>💬</span>
         Chat with us

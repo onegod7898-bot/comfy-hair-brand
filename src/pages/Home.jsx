@@ -14,7 +14,7 @@ export default function Home() {
 
   return (
     <div>
-      {/* Hero: full-bleed background image + gradient overlay for clear text (reference style) */}
+      {/* Hero */}
       <section
         data-hero
         className="relative min-h-[85vh] md:min-h-[90vh] flex flex-col justify-end md:justify-between overflow-hidden"
@@ -25,28 +25,29 @@ export default function Home() {
           backgroundRepeat: 'no-repeat',
         }}
       >
-        {/* Gradient overlay: opaque left for text clarity, fades right so image shows */}
         <div
           className="absolute inset-0 z-0"
           style={{
-            background: 'linear-gradient(90deg, rgba(250,248,245,0.94) 0%, rgba(250,248,245,0.82) 38%, rgba(250,248,245,0.45) 58%, transparent 78%)',
+            background: 'linear-gradient(90deg, rgba(250,249,247,0.96) 0%, rgba(250,249,247,0.85) 40%, rgba(250,249,247,0.4) 60%, transparent 80%)',
           }}
           aria-hidden
         />
-        <div className="relative z-10 max-w-6xl mx-auto w-full px-4 md:px-6 py-12 md:py-16 flex flex-col min-h-[70vh] justify-between">
+        <div className="relative z-10 max-w-6xl mx-auto w-full px-4 sm:px-6 py-14 md:py-20 flex flex-col min-h-[70vh] justify-between">
           <div className="max-w-xl">
-            <p className="text-sm md:text-base text-[#c2415c] font-semibold mb-2">✨ Your Hair, Your Crown</p>
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 leading-tight tracking-tight">
+            <p className="text-xs uppercase tracking-section text-accent font-semibold mb-3">
+              Your Hair, Your Crown
+            </p>
+            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-semibold text-primary leading-[1.1] tracking-tight">
               Luxury Wigs Without the Luxury Price
             </h1>
-            <p className="text-gray-600 text-base md:text-lg mb-8 leading-relaxed">
+            <p className="text-charcoal/80 text-base md:text-lg mt-6 leading-relaxed max-w-lg">
               Affordable. Stylish. Confidence in Every Strand. Transform your look with premium quality wigs crafted for everyday queens.
             </p>
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-wrap gap-4 mt-8">
               <button
                 type="button"
                 onClick={() => navigate('/shop')}
-                className="px-6 py-3 bg-gray-900 text-white text-sm font-semibold rounded hover:bg-gray-800 transition-colors"
+                className="px-7 py-3.5 bg-primary text-white font-semibold rounded-pill hover:bg-primary-dark transition-all duration-200 shadow-card hover:shadow-card-hover"
               >
                 Shop Now →
               </button>
@@ -54,46 +55,49 @@ export default function Home() {
                 href="https://wa.me/2348116500217"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-6 py-3 bg-white/95 border-2 border-gray-900 text-gray-900 text-sm font-semibold rounded hover:bg-gray-900 hover:text-white transition-colors"
+                className="px-7 py-3.5 bg-white border-2 border-primary text-primary font-semibold rounded-pill hover:bg-primary hover:text-white transition-all duration-200"
               >
                 Book Appointment
               </a>
             </div>
           </div>
-          <div className="grid grid-cols-3 gap-4 md:gap-6 pt-8 mt-8 border-t border-gray-300/80 max-w-md">
+          <div className="grid grid-cols-3 gap-6 md:gap-8 pt-10 mt-10 border-t border-sand max-w-md">
             <div>
-              <p className="text-2xl md:text-3xl font-bold text-gray-900">500+</p>
-              <p className="text-sm text-gray-600">Happy Clients</p>
+              <p className="font-display text-3xl md:text-4xl font-semibold text-primary">500+</p>
+              <p className="text-sm text-charcoal/70 mt-0.5">Happy Clients</p>
             </div>
             <div>
-              <p className="text-2xl md:text-3xl font-bold text-gray-900">70+</p>
-              <p className="text-sm text-gray-600">Community Members</p>
+              <p className="font-display text-3xl md:text-4xl font-semibold text-primary">70+</p>
+              <p className="text-sm text-charcoal/70 mt-0.5">Community Members</p>
             </div>
             <div>
-              <p className="text-2xl md:text-3xl font-bold text-gray-900">5★</p>
-              <p className="text-sm text-gray-600">Average Rating</p>
+              <p className="font-display text-3xl md:text-4xl font-semibold text-primary">5★</p>
+              <p className="text-sm text-charcoal/70 mt-0.5">Average Rating</p>
             </div>
           </div>
         </div>
       </section>
 
-      <div className="max-w-6xl mx-auto px-4 py-12 md:py-16">
-        {/* Shop by style - filled with real product videos */}
-        <section className="mb-12 md:mb-16">
-          <h2 className="text-xl font-bold text-gray-900 mb-6">Shop by style</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 md:gap-6">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-14 md:py-20">
+        {/* Shop by style */}
+        <section className="mb-16 md:mb-24">
+          <p className="text-xs uppercase tracking-section text-accent font-semibold mb-2">Shop by style</p>
+          <h2 className="font-display text-2xl md:text-3xl font-semibold text-primary mb-6">
+            Find your look
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5 md:gap-6">
             {getFirstProductPerCategory().map(({ category: cat, product }) => (
               <button
                 key={cat.id}
                 type="button"
                 onClick={() => navigate(product ? `/product/${product.id}` : `/shop?cat=${cat.id}`)}
-                className="rounded-xl overflow-hidden border border-gray-200 bg-white shadow-sm hover:border-gray-300 hover:shadow-md transition-all text-left"
+                className="group text-left rounded-card-lg overflow-hidden bg-white border border-sand shadow-card card-lift hover:border-sand"
               >
-                <div className="aspect-[3/4] bg-black relative">
+                <div className="aspect-[3/4] bg-primary relative overflow-hidden">
                   {product ? (
                     <video
                       src={product.video}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       muted
                       loop
                       playsInline
@@ -104,15 +108,15 @@ export default function Home() {
                     <div className="w-full h-full flex items-center justify-center text-4xl">✨</div>
                   )}
                   {product && (
-                    <span className="absolute bottom-2 left-2 right-2 bg-white/95 px-2 py-1 rounded text-sm font-semibold text-gray-900">
+                    <span className="absolute bottom-3 left-3 right-3 bg-white/95 backdrop-blur-sm px-3 py-2 rounded-lg text-sm font-semibold text-primary shadow-soft">
                       ₦{product.price.toLocaleString()}
                     </span>
                   )}
                 </div>
-                <div className="p-4">
-                  <h3 className="font-semibold text-gray-900">{cat.name}</h3>
-                  <p className="text-sm text-gray-600 mt-1 line-clamp-2">{cat.description}</p>
-                  <span className="inline-block mt-3 text-sm font-medium text-gray-900 border border-gray-300 px-4 py-2 rounded hover:bg-gray-50">
+                <div className="p-5">
+                  <h3 className="font-semibold text-primary">{cat.name}</h3>
+                  <p className="text-sm text-charcoal/70 mt-1 line-clamp-2">{cat.description}</p>
+                  <span className="inline-block mt-4 text-sm font-medium text-accent border border-accent/40 px-4 py-2 rounded-lg hover:bg-accent-light/50 transition-colors">
                     Shop Now
                   </span>
                 </div>
@@ -121,24 +125,27 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Featured Products - with videos and prices */}
-        <section className="mb-12 md:mb-16">
-          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-1">Featured Products</h2>
-          <p className="text-gray-600 mb-6">
+        {/* Featured Products */}
+        <section className="mb-16 md:mb-24">
+          <p className="text-xs uppercase tracking-section text-accent font-semibold mb-2">Bestsellers</p>
+          <h2 className="font-display text-2xl md:text-3xl font-semibold text-primary mb-1">
+            Featured Products
+          </h2>
+          <p className="text-charcoal/70 mb-8 max-w-xl">
             Handpicked bestsellers loved by our community. Quality you can trust.
           </p>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5 md:gap-6">
             {(featured.length ? featured : galleryProducts).map((p) => (
               <button
                 key={p.id}
                 type="button"
                 onClick={() => navigate(`/product/${p.id}`)}
-                className="text-left rounded-xl overflow-hidden border border-gray-200 bg-white shadow-sm hover:border-gray-300 hover:shadow-md transition-all"
+                className="group text-left rounded-card-lg overflow-hidden bg-white border border-sand shadow-card card-lift"
               >
-                <div className="relative aspect-[3/4] bg-black">
+                <div className="relative aspect-[3/4] bg-primary overflow-hidden">
                   <video
                     src={p.video}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     muted
                     loop
                     playsInline
@@ -146,44 +153,46 @@ export default function Home() {
                     preload="metadata"
                   />
                   {p.tag && (
-                    <span className="absolute top-2 left-2 bg-pink-500 text-white text-xs font-medium px-2 py-0.5 rounded-full">
+                    <span className="absolute top-3 left-3 bg-accent text-white text-xs font-semibold px-2.5 py-1 rounded-full uppercase tracking-wide">
                       {p.tag}
                     </span>
                   )}
-                  <span className="absolute bottom-2 left-2 right-2 bg-white/95 px-2 py-1.5 rounded text-sm font-semibold text-gray-900">
+                  <span className="absolute bottom-3 left-3 right-3 bg-white/95 backdrop-blur-sm px-3 py-2 rounded-lg text-sm font-semibold text-primary shadow-soft">
                     ₦{p.price.toLocaleString()}
                   </span>
                   <button
                     type="button"
                     onClick={(e) => { e.stopPropagation(); toggle(p.id) }}
-                    className="absolute top-2 right-2 w-8 h-8 rounded-full bg-white/90 flex items-center justify-center text-red-500"
+                    className="absolute top-3 right-3 w-9 h-9 rounded-full bg-white/95 backdrop-blur-sm flex items-center justify-center text-accent shadow-soft hover:bg-white transition-colors"
                     aria-label={has(p.id) ? 'Remove from favorites' : 'Add to favorites'}
                   >
                     {has(p.id) ? '❤️' : '🤍'}
                   </button>
                 </div>
-                <div className="p-3">
-                  <p className="text-sm font-medium text-gray-900 truncate">{p.name}</p>
+                <div className="p-4">
+                  <p className="text-sm font-medium text-primary truncate">{p.name}</p>
                 </div>
               </button>
             ))}
           </div>
-          <div className="mt-6 text-center">
+          <div className="mt-8 text-center">
             <button
               type="button"
               onClick={() => navigate('/shop')}
-              className="text-gray-900 font-medium hover:underline"
+              className="text-primary font-semibold hover:text-accent transition-colors duration-200"
             >
               View All Products →
             </button>
           </div>
         </section>
 
-        {/* Wig Gallery - videos and prices */}
-        <section className="mb-12 md:mb-16">
-          <p className="text-xs uppercase tracking-wider text-pink-500 font-medium mb-1">Our Work</p>
-          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-1">Wig Gallery</h2>
-          <p className="text-gray-600 mb-6">
+        {/* Wig Gallery */}
+        <section className="mb-16 md:mb-24">
+          <p className="text-xs uppercase tracking-section text-accent font-semibold mb-2">Our Work</p>
+          <h2 className="font-display text-2xl md:text-3xl font-semibold text-primary mb-1">
+            Wig Gallery
+          </h2>
+          <p className="text-charcoal/70 mb-8 max-w-xl">
             Browse our collection of stunning wig transformations and styles.
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -192,12 +201,12 @@ export default function Home() {
                 key={p.id}
                 type="button"
                 onClick={() => navigate(`/product/${p.id}`)}
-                className="rounded-xl overflow-hidden border border-gray-200 bg-white shadow-sm hover:border-gray-300 hover:shadow-md transition-all text-left aspect-square max-h-[280px]"
+                className="group relative text-left rounded-card-lg overflow-hidden bg-white border border-sand shadow-card card-lift aspect-square max-h-[300px]"
               >
-                <div className="w-full h-full bg-black">
+                <div className="w-full h-full bg-primary overflow-hidden">
                   <video
                     src={p.video}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     muted
                     loop
                     playsInline
@@ -205,19 +214,19 @@ export default function Home() {
                     preload="metadata"
                   />
                 </div>
-                <div className="p-3">
-                  <p className="text-sm font-medium text-gray-900 truncate">{p.name}</p>
-                  <p className="text-sm text-gray-600">₦{p.price.toLocaleString()}</p>
+                <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/70 to-transparent text-white">
+                  <p className="text-sm font-medium truncate">{p.name}</p>
+                  <p className="text-sm font-semibold">₦{p.price.toLocaleString()}</p>
                 </div>
               </button>
             ))}
           </div>
-          <div className="mt-6 text-center">
+          <div className="mt-8 text-center">
             <a
               href="https://instagram.com/Oyedelecomfortoluwaseun"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-700 font-medium text-sm hover:underline"
+              className="text-charcoal/70 font-medium text-sm hover:text-accent transition-colors"
             >
               View more on Instagram →
             </a>

@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useCart } from '../context/CartContext'
 import { notifyOrder } from '../services/notify'
+import { createOrder } from '../services/ordersApi'
 
 const paymentMethods = [
   { id: 'nigeria-pay', name: 'Nigeria Pay (Bank / USSD)' },
@@ -19,33 +20,38 @@ export default function Checkout() {
   const shipping = 0
   const discount = 0
 
-  const handleConfirmOrder = () => {
+  const handleConfirmOrder = async () => {
+    let orderId = null
+    try {
+      const { id } = await createOrder(items, total)
+      orderId = id
+    } catch (_) {}
     notifyOrder(items, total)
     clearCart()
-    navigate('/order-success', { state: { items: [...items], total } })
+    navigate('/order-success', { state: { orderId, items: [...items], total } })
   }
 
   return (
-    <div className="pb-6">
-      <header className="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-gray-100">
-        <div className="flex items-center justify-between px-4 h-14">
+    <div className="pb-6 bg-cream min-h-screen">
+      <header className="sticky top-0 z-40 bg-cream/95 backdrop-blur-md border-b border-sand">
+        <div className="flex items-center justify-between px-4 sm:px-6 h-14">
           <button
             type="button"
             onClick={() => (step > 1 ? setStep(step - 1) : navigate('/cart'))}
-            className="p-2 -ml-2 text-gray-600"
+            className="p-2 -ml-2 text-charcoal/80 hover:text-primary"
             aria-label="Back"
           >
             ←
           </button>
-          <h1 className="text-lg font-semibold text-gray-900">Checkout</h1>
+          <h1 className="font-display text-xl font-semibold text-primary">Checkout</h1>
           <div className="w-9" />
         </div>
-        <div className="flex px-4 pb-2 gap-1">
+        <div className="flex px-4 sm:px-6 pb-2 gap-1">
           {[1, 2, 3].map((s) => (
             <div
               key={s}
-              className={`flex-1 h-1 rounded-full ${
-                s <= step ? 'bg-primary' : 'bg-gray-200'
+              className={`flex-1 h-1 rounded-full transition-colors ${
+                s <= step ? 'bg-primary' : 'bg-sand'
               }`}
               aria-hidden
             />
