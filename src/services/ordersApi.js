@@ -27,9 +27,14 @@ export async function updateOrderStatus(orderId, status, adminSecret = null) {
 }
 
 export async function listOrders(adminSecret) {
-  const res = await fetch(`${API}/api/orders?admin=${encodeURIComponent(adminSecret)}`, {
+  const url = `${API}/api/orders`
+  const res = await fetch(adminSecret ? `${url}?admin=${encodeURIComponent(adminSecret)}` : url, {
+    method: 'GET',
     headers: headers(adminSecret),
   })
-  if (!res.ok) throw new Error(res.status === 401 ? 'Invalid password' : 'Failed to load orders')
+  if (!res.ok) {
+    const msg = res.status === 401 ? 'Invalid password. Check that ADMIN_SECRET in Vercel matches the password you enter.' : 'Failed to load orders.'
+    throw new Error(msg)
+  }
   return res.json()
 }
