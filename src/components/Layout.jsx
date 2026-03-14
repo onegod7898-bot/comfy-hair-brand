@@ -15,8 +15,8 @@ export default function Layout() {
   const { count } = useCart()
 
   return (
-    <div className="min-h-screen flex flex-col bg-cream">
-      <header className="sticky top-0 z-50 bg-cream/95 backdrop-blur-md border-b border-sand shadow-nav">
+    <div className="min-h-screen flex flex-col bg-page">
+      <header className="sticky top-0 z-50 bg-page/95 backdrop-blur-md border-b border-sand shadow-nav">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16 md:h-[4.25rem]">
           <button
             type="button"
@@ -50,7 +50,7 @@ export default function Layout() {
             <button
               type="button"
               onClick={() => navigate('/cart')}
-              className="relative p-2.5 text-charcoal/80 hover:text-primary rounded-full hover:bg-cream-dark transition-colors duration-200"
+              className="relative p-2.5 text-charcoal/80 hover:text-primary rounded-full hover:bg-page-dark transition-colors duration-200"
               aria-label="Cart"
             >
               <span className="text-xl" aria-hidden>🛒</span>
@@ -78,7 +78,7 @@ export default function Layout() {
                 type="button"
                 onClick={() => navigate(path)}
                 className={`shrink-0 px-4 py-2 rounded-pill text-sm font-medium transition-colors ${
-                  isActive ? 'bg-primary text-white' : 'bg-cream-dark text-charcoal hover:bg-sand'
+                  isActive ? 'bg-primary text-white' : 'bg-page-dark text-charcoal hover:bg-sand'
                 }`}
               >
                 {label}
@@ -92,7 +92,7 @@ export default function Layout() {
         <Outlet />
       </main>
 
-      <footer className="border-t border-sand bg-cream-dark/50 mt-auto">
+      <footer className="border-t border-sand bg-page-dark/80 mt-auto">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 py-10 md:py-12">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
             <div>

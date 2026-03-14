@@ -32,8 +32,8 @@ export default function Checkout() {
   }
 
   return (
-    <div className="pb-6 bg-cream min-h-screen">
-      <header className="sticky top-0 z-40 bg-cream/95 backdrop-blur-md border-b border-sand">
+    <div className="pb-6 bg-page min-h-screen">
+      <header className="sticky top-0 z-40 bg-page/95 backdrop-blur-md border-b border-sand">
         <div className="flex items-center justify-between px-4 sm:px-6 h-14">
           <button
             type="button"

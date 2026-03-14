@@ -20,7 +20,7 @@ export default function OrderSuccess() {
   }
 
   return (
-    <div className="min-h-[60vh] flex flex-col items-center justify-center px-6 text-center bg-cream">
+    <div className="min-h-[60vh] flex flex-col items-center justify-center px-6 text-center bg-page">
       <div className="w-24 h-24 rounded-full bg-accent-light flex items-center justify-center text-4xl text-accent mb-6">
         ✓
       </div>
@@ -39,7 +39,7 @@ export default function OrderSuccess() {
         <button
           type="button"
           onClick={handleCancelOrder}
-          className="px-8 py-3.5 border-2 border-sand text-charcoal font-semibold rounded-pill hover:bg-cream-dark transition-colors"
+          className="px-8 py-3.5 border-2 border-sand text-charcoal font-semibold rounded-pill hover:bg-page-dark transition-colors"
         >
           Cancel this order
         </button>

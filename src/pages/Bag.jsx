@@ -8,8 +8,8 @@ export default function Bag() {
   const shipping = 0
 
   return (
-    <div className="pb-6 bg-cream min-h-screen">
-      <header className="sticky top-0 z-40 bg-cream/95 backdrop-blur-md border-b border-sand">
+    <div className="pb-6 bg-page min-h-screen">
+      <header className="sticky top-0 z-40 bg-page/95 backdrop-blur-md border-b border-sand">
         <div className="flex items-center justify-between px-4 sm:px-6 h-14">
           <h1 className="font-display text-xl font-semibold text-primary">Cart</h1>
         </div>
@@ -18,7 +18,7 @@ export default function Bag() {
       <div className="max-w-2xl mx-auto px-4 sm:px-6 py-8">
         {items.length === 0 ? (
           <div className="text-center py-16">
-            <div className="w-28 h-28 mx-auto mb-5 rounded-full bg-cream-dark flex items-center justify-center text-5xl">
+            <div className="w-28 h-28 mx-auto mb-5 rounded-full bg-page-dark flex items-center justify-center text-5xl">
               🛒
             </div>
             <p className="font-medium text-primary">Your cart is empty</p>
@@ -39,7 +39,7 @@ export default function Bag() {
                   key={item.id}
                   className="flex gap-4 rounded-card-lg border border-sand p-4 bg-white shadow-soft"
                 >
-                  <div className="w-20 h-24 rounded-lg bg-cream-dark flex items-center justify-center flex-shrink-0 overflow-hidden">
+                  <div className="w-20 h-24 rounded-lg bg-page-dark flex items-center justify-center flex-shrink-0 overflow-hidden">
                     {item.image && (item.image.includes('.mp4') || item.image.includes('/videos/')) ? (
                       <video src={item.image} className="w-full h-full object-cover" muted playsInline preload="metadata" />
                     ) : (
@@ -53,7 +53,7 @@ export default function Bag() {
                       <button
                         type="button"
                         onClick={() => updateQty(item.id, -1)}
-                        className="w-7 h-7 rounded-full border border-sand flex items-center justify-center text-charcoal/80 text-sm font-medium hover:bg-cream-dark transition-colors"
+                        className="w-7 h-7 rounded-full border border-sand flex items-center justify-center text-charcoal/80 text-sm font-medium hover:bg-page-dark transition-colors"
                         aria-label="Decrease quantity"
                       >
                         −
@@ -62,7 +62,7 @@ export default function Bag() {
                       <button
                         type="button"
                         onClick={() => updateQty(item.id, 1)}
-                        className="w-7 h-7 rounded-full border border-sand flex items-center justify-center text-charcoal/80 text-sm font-medium hover:bg-cream-dark transition-colors"
+                        className="w-7 h-7 rounded-full border border-sand flex items-center justify-center text-charcoal/80 text-sm font-medium hover:bg-page-dark transition-colors"
                         aria-label="Increase quantity"
                       >
                         +
@@ -75,7 +75,7 @@ export default function Bag() {
 
             <button
               type="button"
-              className="w-full mt-4 py-2.5 border border-sand rounded-card text-sm font-medium text-charcoal/80 hover:bg-cream-dark transition-colors"
+              className="w-full mt-4 py-2.5 border border-sand rounded-card text-sm font-medium text-charcoal/80 hover:bg-page-dark transition-colors"
             >
               Use Voucher
             </button>

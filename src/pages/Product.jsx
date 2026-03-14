@@ -37,7 +37,7 @@ export default function Product() {
   }
 
   return (
-    <div className="min-h-screen bg-cream">
+    <div className="min-h-screen bg-page">
       <button
         type="button"
         onClick={() => navigate(-1)}
@@ -96,7 +96,7 @@ export default function Product() {
           {added ? 'Added to cart' : 'Add to cart'}
         </button>
       </div>
-      <p className="text-center text-xs text-charcoal/60 px-4 py-3 bg-cream-dark/50">
+      <p className="text-center text-xs text-charcoal/60 px-4 py-3 bg-page-dark/50">
         All payments in Naira. Pay to Nigeria account: <strong className="text-primary">8116500217</strong>. Screenshot the hair you want with the price and send to 08116500217 (WhatsApp).
       </p>
 

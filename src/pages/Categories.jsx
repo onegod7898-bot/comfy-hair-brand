@@ -19,7 +19,7 @@ export default function Categories() {
           type="button"
           onClick={() => navigate('/shop')}
           className={`px-5 py-2.5 rounded-pill text-sm font-semibold transition-all duration-200 ${
-            category === 'all' ? 'bg-primary text-white shadow-soft' : 'bg-white border border-sand text-charcoal hover:border-charcoal/30 hover:bg-cream-dark'
+            category === 'all' ? 'bg-primary text-white shadow-soft' : 'bg-white border border-sand text-charcoal hover:border-charcoal/30 hover:bg-page-dark'
           }`}
         >
           All
@@ -30,7 +30,7 @@ export default function Categories() {
             type="button"
             onClick={() => navigate(`/shop?cat=${c.id}`)}
             className={`px-5 py-2.5 rounded-pill text-sm font-semibold transition-all duration-200 ${
-              category === c.id ? 'bg-primary text-white shadow-soft' : 'bg-white border border-sand text-charcoal hover:border-charcoal/30 hover:bg-cream-dark'
+              category === c.id ? 'bg-primary text-white shadow-soft' : 'bg-white border border-sand text-charcoal hover:border-charcoal/30 hover:bg-page-dark'
             }`}
           >
             {c.name.replace(' Wigs', '')}

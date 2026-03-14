@@ -86,7 +86,7 @@ export default function Admin() {
 
   if (!secret) {
     return (
-      <div className="min-h-[60vh] flex flex-col items-center justify-center px-4 py-12 bg-cream">
+      <div className="min-h-[60vh] flex flex-col items-center justify-center px-4 py-12 bg-page">
         <div className="w-full max-w-md rounded-2xl border-2 border-sand bg-white p-8 shadow-card">
           <h1 className="font-display text-2xl font-semibold text-primary mb-1">Admin</h1>
           <p className="text-charcoal/70 text-sm mb-6">Enter your admin password to view and manage orders.</p>
@@ -125,7 +125,7 @@ export default function Admin() {
   }
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-8 bg-cream min-h-screen">
+    <div className="max-w-4xl mx-auto px-4 py-8 bg-page min-h-screen">
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
         <h1 className="font-display text-2xl font-semibold text-primary">Orders</h1>
         <div className="flex items-center gap-3">
@@ -133,14 +133,14 @@ export default function Admin() {
             type="button"
             onClick={loadOrders}
             disabled={loading}
-            className="px-4 py-2 border border-sand rounded-lg text-sm font-medium text-charcoal hover:bg-cream-dark disabled:opacity-50"
+            className="px-4 py-2 border border-sand rounded-lg text-sm font-medium text-charcoal hover:bg-page-dark disabled:opacity-50"
           >
             {loading ? 'Loading…' : 'Refresh'}
           </button>
           <button
             type="button"
             onClick={() => navigate('/')}
-            className="px-4 py-2 border border-sand rounded-lg text-sm font-medium text-charcoal hover:bg-cream-dark"
+            className="px-4 py-2 border border-sand rounded-lg text-sm font-medium text-charcoal hover:bg-page-dark"
           >
             Back to site
           </button>
@@ -220,7 +220,7 @@ export default function Admin() {
                       type="button"
                       disabled={updating === order.id}
                       onClick={() => handleStatusChange(order.id, 'cancelled')}
-                      className="px-3 py-1.5 text-sm font-medium rounded-lg border border-sand text-charcoal hover:bg-cream-dark disabled:opacity-50"
+                      className="px-3 py-1.5 text-sm font-medium rounded-lg border border-sand text-charcoal hover:bg-page-dark disabled:opacity-50"
                     >
                       Cancel
                     </button>

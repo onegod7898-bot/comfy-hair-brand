@@ -3,7 +3,8 @@
 @tailwind utilities;
 
 body {
-  @apply font-sans antialiased text-charcoal bg-cream;
+  @apply font-sans antialiased text-charcoal;
+  background-color: #faf6f5;
   min-height: 100vh;
   padding-bottom: env(safe-area-inset-bottom, 0);
 }

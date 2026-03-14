@@ -15,6 +15,9 @@ export default {
         'cream-dark': '#f2f0ec',
         charcoal: '#2d2d2d',
         sand: '#e8e6e3',
+        /* Wig store: soft warm blush background */
+        'page': '#faf6f5',
+        'page-dark': '#f5efed',
       },
       fontFamily: {
         sans: ['DM Sans', 'system-ui', 'sans-serif'],
