@@ -98,8 +98,16 @@ export default function Product() {
         </button>
       </div>
       <p className="text-center text-xs text-charcoal/60 px-4 py-3 bg-page-dark/50">
-        All payments in Naira. Pay to Nigeria account(s): <strong className="text-primary">{NIGERIA_PAY_ACCOUNTS[0].account}</strong>{' '}
-        and <strong className="text-primary">{NIGERIA_PAY_ACCOUNTS[1].account}</strong>. Screenshot the hair you want with the price and send to 08116500217 (WhatsApp).
+        All payments in Naira. Pay to Nigeria account(s):
+        <br />
+        <span className="text-charcoal/70">
+          {NIGERIA_PAY_ACCOUNTS[0].account} (Nigeria Pay)
+        </span>
+        <br />
+        <span className="text-charcoal/70">
+          {NIGERIA_PAY_ACCOUNTS[1].account} ({NIGERIA_PAY_ACCOUNTS[1].label})
+        </span>
+        . Screenshot the hair you want with the price and send to 08116500217 (WhatsApp).
       </p>
 
       {otherProducts.length > 0 && (

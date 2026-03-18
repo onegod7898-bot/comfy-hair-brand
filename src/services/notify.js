@@ -27,9 +27,13 @@ export function notifyCart(items) {
 
 export function notifyOrder(items, total) {
   if (!FORM_ID || !items?.length) return
-  const acc1 = NIGERIA_PAY_ACCOUNTS?.[0]?.account || ''
-  const acc2 = NIGERIA_PAY_ACCOUNTS?.[1]?.account || ''
-  const message = `New order placed:\n\n${formatItems(items)}\n\nTotal: ₦${Number(total).toLocaleString()}\n\nPay to Nigeria account(s): ${acc1} and ${acc2}`
+  const acc1 = NIGERIA_PAY_ACCOUNTS?.[0]
+  const acc2 = NIGERIA_PAY_ACCOUNTS?.[1]
+  const line1 = acc1?.account ? `${acc1.account} (${acc1.label || 'Nigeria Pay'})` : ''
+  const line2 = acc2?.account
+    ? `${acc2.account} (${acc2.label || 'Bank'})${acc2.name ? ` - ${acc2.name}` : ''}`
+    : ''
+  const message = `New order placed:\n\n${formatItems(items)}\n\nTotal: ₦${Number(total).toLocaleString()}\n\nPay to Nigeria account(s):\n${line1}\n${line2}`
   sendFormspree('Comfy Hair — New order placed', message)
 }
 

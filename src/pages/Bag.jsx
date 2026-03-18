@@ -96,8 +96,15 @@ export default function Bag() {
               </div>
             </div>
             <p className="text-xs text-charcoal/60 mt-2">
-              All payments in Naira. Pay to Nigeria account(s): <strong>{NIGERIA_PAY_ACCOUNTS[0].account}</strong> and{' '}
-              <strong>{NIGERIA_PAY_ACCOUNTS[1].account}</strong>.
+              All payments in Naira. Pay to Nigeria account(s):
+              <br />
+              <span className="text-charcoal/70">
+                {NIGERIA_PAY_ACCOUNTS[0].account} (Nigeria Pay)
+              </span>
+              <br />
+              <span className="text-charcoal/70">
+                {NIGERIA_PAY_ACCOUNTS[1].account} ({NIGERIA_PAY_ACCOUNTS[1].label})
+              </span>
             </p>
 
             <button
