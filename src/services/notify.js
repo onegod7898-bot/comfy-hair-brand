@@ -29,7 +29,7 @@ export function notifyOrder(items, total) {
   if (!FORM_ID || !items?.length) return
   const acc1 = NIGERIA_PAY_ACCOUNTS?.[0]
   const acc2 = NIGERIA_PAY_ACCOUNTS?.[1]
-  const line1 = acc1?.account ? `${acc1.account} (${acc1.label || 'Nigeria Pay'})` : ''
+  const line1 = acc1?.account ? `${acc1.account} (${acc1.label || 'Opay'})` : ''
   const line2 = acc2?.account
     ? `${acc2.account} (${acc2.label || 'Bank'})${acc2.name ? ` - ${acc2.name}` : ''}`
     : ''

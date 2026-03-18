@@ -38,7 +38,7 @@ export default function Terms() {
         <div className="space-y-2">
           <p className="font-semibold text-primary">1. Orders & Payment</p>
           <p>
-            Payments are made using Nigeria Pay (bank/USSD) as shown on the checkout page. After payment, you
+            Payments are made via Opay or GTB (bank/USSD) as shown on the checkout page. After payment, you
             must send proof as instructed so we can confirm your order.
           </p>
         </div>

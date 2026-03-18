@@ -37,7 +37,7 @@ export default function Privacy() {
           </p>
           <p>• Name and contact details you provide during checkout</p>
           <p>• Cart items and order totals</p>
-          <p>• Payment-related information you share (for example, payment proof) after using Nigeria Pay</p>
+          <p>• Payment-related information you share (for example, payment proof) after paying via Opay or bank transfer</p>
           <p>• Messages you send to us (for example via WhatsApp)</p>
         </div>
 

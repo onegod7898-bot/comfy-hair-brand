@@ -6,7 +6,7 @@ import { createOrder } from '../services/ordersApi'
 import { NIGERIA_PAY_ACCOUNTS } from '../config'
 
 const paymentMethods = [
-  { id: 'nigeria-pay', name: 'Nigeria Pay (Bank / USSD)' },
+  { id: 'nigeria-pay', name: 'Bank / USSD (Opay & GTB)' },
   { id: 'transfer', name: 'Bank Transfer' },
 ]
 

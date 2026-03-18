@@ -5,7 +5,7 @@ export const NIGERIA_PAY_ACCOUNT_2_BANK = 'GTB (Guaranty Trust Bank)'
 export const NIGERIA_PAY_ACCOUNT_2_NAME = 'OYEDELE COMFORT OLUWASEUN'
 
 export const NIGERIA_PAY_ACCOUNTS = [
-  { account: NIGERIA_PAY_ACCOUNT, label: 'Nigeria Pay (default)' },
+  { account: NIGERIA_PAY_ACCOUNT, label: 'Opay' },
   {
     account: NIGERIA_PAY_ACCOUNT_2,
     label: NIGERIA_PAY_ACCOUNT_2_BANK,

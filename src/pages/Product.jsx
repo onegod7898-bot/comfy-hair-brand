@@ -101,7 +101,7 @@ export default function Product() {
         All payments in Naira. Pay to Nigeria account(s):
         <br />
         <span className="text-charcoal/70">
-          {NIGERIA_PAY_ACCOUNTS[0].account} (Nigeria Pay)
+          {NIGERIA_PAY_ACCOUNTS[0].account} ({NIGERIA_PAY_ACCOUNTS[0].label})
         </span>
         <br />
         <span className="text-charcoal/70">

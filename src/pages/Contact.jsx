@@ -8,7 +8,7 @@ export default function Contact() {
       <p className="text-charcoal/70 mb-8">
         Have questions or want to order? All prices are in Naira. Pay to Nigeria account(s):
         <br />
-        <strong className="text-primary">{NIGERIA_PAY_ACCOUNTS[0].account}</strong> (Nigeria Pay)
+        <strong className="text-primary">{NIGERIA_PAY_ACCOUNTS[0].account}</strong> ({NIGERIA_PAY_ACCOUNTS[0].label})
         <br />
         <strong className="text-primary">{NIGERIA_PAY_ACCOUNTS[1].account}</strong> ({NIGERIA_PAY_ACCOUNTS[1].label}).
         Reach out through any of these channels.
@@ -24,10 +24,10 @@ export default function Contact() {
           <span className="text-charcoal/70 block text-sm mt-1">+234 811 650 0217</span>
         </a>
         <div className="p-5 rounded-card-lg border border-accent/30 bg-accent-light/30">
-          <span className="font-semibold text-primary">Nigeria Pay (Bank / USSD)</span>
+          <span className="font-semibold text-primary">Bank / USSD</span>
           <span className="text-charcoal/80 block text-sm mt-1">
             <span className="block">
-              {NIGERIA_PAY_ACCOUNTS[0].account} (Nigeria Pay)
+              {NIGERIA_PAY_ACCOUNTS[0].account} ({NIGERIA_PAY_ACCOUNTS[0].label})
             </span>
             <span className="block mt-1">
               {NIGERIA_PAY_ACCOUNTS[1].account} ({NIGERIA_PAY_ACCOUNTS[1].label}) - {NIGERIA_PAY_ACCOUNTS[1].name}
