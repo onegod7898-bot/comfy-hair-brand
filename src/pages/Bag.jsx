@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import { useCart } from '../context/CartContext'
+import LazyVideo from '../components/LazyVideo'
 import { NIGERIA_PAY_ACCOUNTS } from '../config'
 
 export default function Bag() {
@@ -40,9 +41,15 @@ export default function Bag() {
                   key={item.id}
                   className="flex gap-4 rounded-card-lg border border-sand p-4 bg-white shadow-soft"
                 >
-                  <div className="w-20 h-24 rounded-lg bg-page-dark flex items-center justify-center flex-shrink-0 overflow-hidden">
+                  <div className="w-20 h-24 rounded-lg bg-page-dark flex-shrink-0 overflow-hidden relative flex items-center justify-center">
                     {item.image && (item.image.includes('.mp4') || item.image.includes('/videos/')) ? (
-                      <video src={item.image} className="w-full h-full object-cover" muted playsInline preload="metadata" />
+                      <LazyVideo
+                        src={item.image}
+                        className="w-full h-full object-cover"
+                        wrapperClassName="absolute inset-0"
+                        autoPlayWhenVisible={false}
+                        rootMargin="40px"
+                      />
                     ) : (
                       <span className="text-3xl">{item.image || '✨'}</span>
                     )}

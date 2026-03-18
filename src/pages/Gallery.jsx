@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom'
+import LazyVideo from '../components/LazyVideo'
 import { getGalleryProducts } from '../data/wigProducts'
 
 export default function Gallery() {
@@ -20,15 +21,11 @@ export default function Gallery() {
             onClick={() => navigate(`/product/${p.id}`)}
             className="group text-left rounded-card-lg overflow-hidden bg-white border border-sand shadow-card card-lift"
           >
-            <div className="aspect-[3/4] bg-primary overflow-hidden">
-              <video
+            <div className="aspect-[3/4] bg-primary overflow-hidden relative">
+              <LazyVideo
                 src={p.video}
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                muted
-                loop
-                playsInline
-                autoPlay
-                preload="metadata"
+                wrapperClassName="absolute inset-0"
               />
             </div>
             <div className="p-4">

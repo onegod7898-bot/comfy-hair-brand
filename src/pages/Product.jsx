@@ -5,6 +5,7 @@ import { useFavorites } from '../context/FavoritesContext'
 import { getProductById, getOtherProducts } from '../data/wigProducts'
 import { notifyCart } from '../services/notify'
 import { NIGERIA_PAY_ACCOUNTS } from '../config'
+import LazyVideo from '../components/LazyVideo'
 
 export default function Product() {
   const { id } = useParams()
@@ -57,6 +58,8 @@ export default function Product() {
           playsInline
           autoPlay
           muted
+          preload="auto"
+          fetchPriority="high"
         />
         <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/92 via-black/60 to-transparent pt-14 pb-5 px-5">
           {product.dealCode && (
@@ -122,13 +125,12 @@ export default function Product() {
                 onClick={() => navigate(`/product/${p.id}`)}
                 className="flex-shrink-0 w-[130px] text-left rounded-card-lg overflow-hidden border border-sand bg-white shadow-soft hover:shadow-card transition-all"
               >
-                <div className="aspect-[3/4] bg-primary">
-                  <video
+                <div className="aspect-[3/4] bg-primary relative">
+                  <LazyVideo
                     src={p.video}
                     className="w-full h-full object-cover"
-                    muted
-                    playsInline
-                    preload="metadata"
+                    wrapperClassName="absolute inset-0"
+                    autoPlayWhenVisible={false}
                   />
                 </div>
                 <div className="p-2.5">

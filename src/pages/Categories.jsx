@@ -1,5 +1,6 @@
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import { useFavorites } from '../context/FavoritesContext'
+import LazyVideo from '../components/LazyVideo'
 import { wigCategories, getProductsByCategory } from '../data/wigProducts'
 
 export default function Categories() {
@@ -46,14 +47,10 @@ export default function Categories() {
             className="group text-left rounded-card-lg overflow-hidden bg-white border border-sand shadow-card card-lift"
           >
             <div className="relative aspect-[3/4] bg-primary overflow-hidden">
-              <video
+              <LazyVideo
                 src={p.video}
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                muted
-                loop
-                playsInline
-                autoPlay
-                preload="metadata"
+                wrapperClassName="absolute inset-0"
               />
               {p.tag && (
                 <span className="absolute top-3 left-3 bg-accent text-white text-xs font-semibold px-2.5 py-1 rounded-full uppercase tracking-wide">

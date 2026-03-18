@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import { useFavorites } from '../context/FavoritesContext'
+import LazyVideo from '../components/LazyVideo'
 import {
   getFeaturedProducts,
   getGalleryProducts,
@@ -96,14 +97,10 @@ export default function Home() {
               >
                 <div className="aspect-[3/4] bg-primary relative overflow-hidden">
                   {product ? (
-                    <video
+                    <LazyVideo
                       src={product.video}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                      muted
-                      loop
-                      playsInline
-                      autoPlay
-                      preload="metadata"
+                      wrapperClassName="absolute inset-0"
                     />
                   ) : (
                     <div className="w-full h-full flex items-center justify-center text-4xl">✨</div>
@@ -144,14 +141,10 @@ export default function Home() {
                 className="group text-left rounded-card-lg overflow-hidden bg-white border border-sand shadow-card card-lift"
               >
                 <div className="relative aspect-[3/4] bg-primary overflow-hidden">
-                  <video
+                  <LazyVideo
                     src={p.video}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    muted
-                    loop
-                    playsInline
-                    autoPlay
-                    preload="metadata"
+                    wrapperClassName="absolute inset-0"
                   />
                   {p.tag && (
                     <span className="absolute top-3 left-3 bg-accent text-white text-xs font-semibold px-2.5 py-1 rounded-full uppercase tracking-wide">
@@ -204,15 +197,11 @@ export default function Home() {
                 onClick={() => navigate(`/product/${p.id}`)}
                 className="group relative text-left rounded-card-lg overflow-hidden bg-white border border-sand shadow-card card-lift aspect-square max-h-[300px]"
               >
-                <div className="w-full h-full bg-primary overflow-hidden">
-                  <video
+                <div className="w-full h-full bg-primary overflow-hidden relative">
+                  <LazyVideo
                     src={p.video}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    muted
-                    loop
-                    playsInline
-                    autoPlay
-                    preload="metadata"
+                    wrapperClassName="absolute inset-0"
                   />
                 </div>
                 <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/70 to-transparent text-white">
