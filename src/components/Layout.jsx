@@ -161,6 +161,12 @@ export default function Layout() {
               <button type="button" onClick={() => navigate('/contact')} className="text-charcoal/70 hover:text-primary transition-colors">
                 Contact
               </button>
+              <button type="button" onClick={() => navigate('/terms')} className="text-charcoal/70 hover:text-primary transition-colors">
+                Terms
+              </button>
+              <button type="button" onClick={() => navigate('/privacy')} className="text-charcoal/70 hover:text-primary transition-colors">
+                Privacy
+              </button>
               <a href="https://wa.me/2348116500217" target="_blank" rel="noopener noreferrer" className="text-charcoal/70 hover:text-primary transition-colors">
                 WhatsApp
               </a>
