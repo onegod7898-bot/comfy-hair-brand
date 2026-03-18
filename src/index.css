@@ -40,3 +40,24 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
 }
+
+/* No refund announcement marquee (appears on all pages via Layout.jsx) */
+.no-refund-marquee-viewport {
+  /* Creates a clipping window for the animated text */
+  position: relative;
+}
+.no-refund-marquee-track {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  width: max-content;
+  animation: noRefundMarquee 14s linear infinite;
+}
+@keyframes noRefundMarquee {
+  0% {
+    transform: translateX(30%);
+  }
+  100% {
+    transform: translateX(-55%);
+  }
+}

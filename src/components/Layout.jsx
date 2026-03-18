@@ -88,6 +88,58 @@ export default function Layout() {
         </div>
       </header>
 
+      <div className="sticky top-16 md:top-[4.25rem] z-40 bg-page-dark/70 backdrop-blur-md border-b border-sand">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-2">
+          <div className="flex items-center gap-3 text-xs md:text-sm text-charcoal/90">
+            <div className="shrink-0 flex items-center justify-center w-9 h-7 rounded-pill bg-accent-light/40 border border-sand/60">
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden
+              >
+                <path
+                  d="M12 2L2 20h20L12 2Z"
+                  stroke="#b76e79"
+                  strokeWidth="1.6"
+                  strokeLinejoin="round"
+                />
+                <path
+                  d="M12 9v5"
+                  stroke="#b76e79"
+                  strokeWidth="1.6"
+                  strokeLinecap="round"
+                />
+                <path
+                  d="M12 17.5h.01"
+                  stroke="#b76e79"
+                  strokeWidth="2.6"
+                  strokeLinecap="round"
+                />
+              </svg>
+            </div>
+
+            <div className="relative flex-1 overflow-hidden no-refund-marquee-viewport">
+              <div className="no-refund-marquee-track">
+                <span className="font-semibold text-primary">NO REFUNDS.</span>
+                <span className="mx-3 text-charcoal/70">Only collect or replace products.</span>
+                <span className="mx-3 text-primary">NO REFUNDS.</span>
+                <span className="mx-3 text-charcoal/70">Only collect or replace products.</span>
+                <span className="mx-3 text-primary">NO REFUNDS.</span>
+                <span className="mx-3 text-charcoal/70">Only collect or replace products.</span>
+                <span className="mx-3 text-primary">NO REFUNDS.</span>
+                <span className="mx-3 text-charcoal/70">Only collect or replace products.</span>
+              </div>
+            </div>
+          </div>
+          <p className="mt-1 text-[11px] text-charcoal/60">
+            Please confirm the hair name and price before payment. (Collection/Replacement only.)
+          </p>
+        </div>
+      </div>
+
       <main className="flex-1">
         <Outlet />
       </main>
