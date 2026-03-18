@@ -36,7 +36,7 @@ export default function Checkout() {
       <header className="sticky top-0 z-40 bg-page/95 backdrop-blur-md border-b border-sand">
         <div className="flex items-center justify-between px-4 sm:px-6 h-14">
           <button
-``type="button"
+            type="button"
             onClick={() => (step > 1 ? setStep(step - 1) : navigate('/cart'))}
             className="p-2 -ml-2 text-charcoal/80 hover:text-primary"
             aria-label="Back"
