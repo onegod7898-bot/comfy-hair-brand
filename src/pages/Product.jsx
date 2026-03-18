@@ -4,6 +4,7 @@ import { useCart } from '../context/CartContext'
 import { useFavorites } from '../context/FavoritesContext'
 import { getProductById, getOtherProducts } from '../data/wigProducts'
 import { notifyCart } from '../services/notify'
+import { NIGERIA_PAY_ACCOUNTS } from '../config'
 
 export default function Product() {
   const { id } = useParams()
@@ -97,7 +98,8 @@ export default function Product() {
         </button>
       </div>
       <p className="text-center text-xs text-charcoal/60 px-4 py-3 bg-page-dark/50">
-        All payments in Naira. Pay to Nigeria account: <strong className="text-primary">8116500217</strong>. Screenshot the hair you want with the price and send to 08116500217 (WhatsApp).
+        All payments in Naira. Pay to Nigeria account(s): <strong className="text-primary">{NIGERIA_PAY_ACCOUNTS[0].account}</strong>{' '}
+        and <strong className="text-primary">{NIGERIA_PAY_ACCOUNTS[1].account}</strong>. Screenshot the hair you want with the price and send to 08116500217 (WhatsApp).
       </p>
 
       {otherProducts.length > 0 && (

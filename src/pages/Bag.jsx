@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import { useCart } from '../context/CartContext'
+import { NIGERIA_PAY_ACCOUNTS } from '../config'
 
 export default function Bag() {
   const navigate = useNavigate()
@@ -95,7 +96,8 @@ export default function Bag() {
               </div>
             </div>
             <p className="text-xs text-charcoal/60 mt-2">
-              All payments in Naira. Pay to Nigeria account: <strong>8116500217</strong>.
+              All payments in Naira. Pay to Nigeria account(s): <strong>{NIGERIA_PAY_ACCOUNTS[0].account}</strong> and{' '}
+              <strong>{NIGERIA_PAY_ACCOUNTS[1].account}</strong>.
             </p>
 
             <button

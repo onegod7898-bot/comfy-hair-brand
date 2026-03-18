@@ -3,12 +3,12 @@ import { useNavigate } from 'react-router-dom'
 import { useCart } from '../context/CartContext'
 import { notifyOrder } from '../services/notify'
 import { createOrder } from '../services/ordersApi'
+import { NIGERIA_PAY_ACCOUNTS } from '../config'
 
 const paymentMethods = [
   { id: 'nigeria-pay', name: 'Nigeria Pay (Bank / USSD)' },
   { id: 'transfer', name: 'Bank Transfer' },
 ]
-const NIGERIA_PAY_ACCOUNT = '8116500217'
 
 export default function Checkout() {
   const navigate = useNavigate()
@@ -36,7 +36,7 @@ export default function Checkout() {
       <header className="sticky top-0 z-40 bg-page/95 backdrop-blur-md border-b border-sand">
         <div className="flex items-center justify-between px-4 sm:px-6 h-14">
           <button
-            type="button"
+``type="button"
             onClick={() => (step > 1 ? setStep(step - 1) : navigate('/cart'))}
             className="p-2 -ml-2 text-charcoal/80 hover:text-primary"
             aria-label="Back"
@@ -130,8 +130,18 @@ export default function Checkout() {
             </div>
             {(payment === 'nigeria-pay' || payment === 'transfer') && (
               <div className="mt-4 p-4 rounded-lg bg-amber-50 border border-amber-200">
-                <p className="text-sm font-medium text-gray-900">Pay to Nigeria account</p>
-                <p className="text-xl font-bold text-gray-900 mt-1">{NIGERIA_PAY_ACCOUNT}</p>
+                <p className="text-sm font-medium text-gray-900">Pay to Nigeria account(s)</p>
+                <div className="mt-2 space-y-2">
+                  {NIGERIA_PAY_ACCOUNTS.map((acc) => (
+                    <div key={acc.account}>
+                      <p className="text-xs text-gray-600">{acc.label}</p>
+                      <p className="text-xl font-bold text-gray-900">{acc.account}</p>
+                      {acc.name && (
+                        <p className="text-xs text-gray-500 mt-0.5">{acc.name}</p>
+                      )}
+                    </div>
+                  ))}
+                </div>
                 <p className="text-xs text-gray-600 mt-1">All amounts in Naira (₦). After payment, send proof via WhatsApp to confirm your order.</p>
               </div>
             )}
@@ -169,7 +179,11 @@ export default function Checkout() {
                 <span>₦{total.toLocaleString()}</span>
               </div>
             </div>
-            <p className="text-xs text-gray-600 mt-2">Pay to Nigeria account: <strong>{NIGERIA_PAY_ACCOUNT}</strong>. All amounts in Naira.</p>
+            <p className="text-xs text-gray-600 mt-2">
+              Pay to Nigeria account(s):{' '}
+              <strong className="text-gray-900">{NIGERIA_PAY_ACCOUNTS[0].account}</strong> and{' '}
+              <strong className="text-gray-900">{NIGERIA_PAY_ACCOUNTS[1].account}</strong>. All amounts in Naira.
+            </p>
             <button
               type="button"
               onClick={handleConfirmOrder}

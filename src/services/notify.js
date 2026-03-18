@@ -4,6 +4,8 @@
  * Create a form at https://formspree.io and use the form ID from the form endpoint (e.g. xyz in https://formspree.io/f/xyz).
  */
 
+import { NIGERIA_PAY_ACCOUNTS } from '../config'
+
 const FORM_ID = import.meta.env.VITE_FORMSPREE_FORM_ID
 
 function formatItems(items) {
@@ -25,7 +27,9 @@ export function notifyCart(items) {
 
 export function notifyOrder(items, total) {
   if (!FORM_ID || !items?.length) return
-  const message = `New order placed:\n\n${formatItems(items)}\n\nTotal: ₦${Number(total).toLocaleString()}\n\nPay to Nigeria account: 8116500217`
+  const acc1 = NIGERIA_PAY_ACCOUNTS?.[0]?.account || ''
+  const acc2 = NIGERIA_PAY_ACCOUNTS?.[1]?.account || ''
+  const message = `New order placed:\n\n${formatItems(items)}\n\nTotal: ₦${Number(total).toLocaleString()}\n\nPay to Nigeria account(s): ${acc1} and ${acc2}`
   sendFormspree('Comfy Hair — New order placed', message)
 }
 
