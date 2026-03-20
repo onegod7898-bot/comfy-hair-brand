@@ -1,5 +1,6 @@
 import { Outlet, useNavigate, useLocation } from 'react-router-dom'
 import { useCart } from '../context/CartContext'
+import NewsletterModal from './NewsletterModal'
 
 const navLinks = [
   { path: '/', label: 'Home' },
@@ -187,6 +188,8 @@ export default function Layout() {
         <span aria-hidden>💬</span>
         Chat with us
       </a>
+
+      <NewsletterModal />
     </div>
   )
 }

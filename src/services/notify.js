@@ -46,6 +46,29 @@ export function notifyOrderCancelled(items, total) {
   sendFormspree('Comfy Hair — Order cancelled', message)
 }
 
+/** Newsletter / discount list signup — uses the same Formspree form ID */
+export async function notifyNewsletterSignup(name, email) {
+  if (!FORM_ID || !email?.trim()) return { ok: false }
+  const cleanName = (name || '').trim() || '—'
+  const cleanEmail = email.trim()
+  const message = `Newsletter signup (discount / offers):\n\nName: ${cleanName}\nEmail: ${cleanEmail}`
+  try {
+    const res = await fetch(`https://formspree.io/f/${FORM_ID}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify({
+        _subject: 'Comfy Hair — Newsletter / discount signup',
+        message,
+        name: cleanName,
+        email: cleanEmail,
+      }),
+    })
+    return { ok: res.ok }
+  } catch {
+    return { ok: false }
+  }
+}
+
 function sendFormspree(subject, message) {
   const url = `https://formspree.io/f/${FORM_ID}`
   fetch(url, {
