@@ -99,34 +99,37 @@ export default function NewsletterModal() {
     >
       <button
         type="button"
-        className="absolute inset-0 bg-charcoal/40 backdrop-blur-sm"
+        className="absolute inset-0 bg-primary/30 backdrop-blur-sm"
         aria-label="Close newsletter"
         onClick={close}
       />
       <div
-        className="relative z-[101] w-full max-w-md rounded-xl bg-white border-2 border-dashed border-[#22c55e] shadow-card-hover p-6 sm:p-8"
+        className="relative z-[101] w-full max-w-md rounded-card-lg bg-page border-2 border-dashed border-accent/45 shadow-card-hover p-6 sm:p-8 ring-1 ring-sand/80"
         style={{ animation: 'newsletterIn 0.25s ease-out' }}
       >
         <button
           type="button"
           onClick={close}
-          className="absolute top-3 right-3 w-9 h-9 flex items-center justify-center text-xl text-primary hover:text-charcoal/70 rounded-full hover:bg-page-dark transition-colors"
+          className="absolute top-3 right-3 w-9 h-9 flex items-center justify-center text-xl text-charcoal/60 hover:text-primary rounded-full hover:bg-accent-light/50 transition-colors"
           aria-label="Close"
         >
           ×
         </button>
+        <p className="text-xs text-center uppercase tracking-section text-accent font-semibold mb-2 pr-6">
+          Exclusive offers
+        </p>
         <h2
           id="newsletter-modal-title"
-          className="font-sans text-center text-base sm:text-lg font-bold tracking-wide text-primary uppercase pr-6"
+          className="font-display text-center text-2xl sm:text-[1.65rem] font-semibold text-primary pr-6 leading-tight"
         >
           Newsletter signup
         </h2>
-        <p className="text-center text-sm text-charcoal/80 mt-3 leading-relaxed">
+        <p className="text-center text-sm text-charcoal/75 mt-3 leading-relaxed">
           Sign up for our e-mail and be the first who know of our special offers!
         </p>
 
         {status === 'done' ? (
-          <p className="mt-8 text-center text-sm font-semibold text-[#22c55e]">
+          <p className="mt-8 text-center text-sm font-semibold text-accent">
             Thank you — you&apos;re on the list! Check your inbox soon.
           </p>
         ) : (
@@ -138,7 +141,7 @@ export default function NewsletterModal() {
               placeholder="Enter your full name"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="w-full px-4 py-3 rounded-lg border border-sand text-sm text-primary placeholder:text-charcoal/40 focus:outline-none focus:ring-2 focus:ring-[#22c55e]/40 focus:border-[#22c55e]"
+              className="w-full px-4 py-3 rounded-lg border border-sand bg-white text-sm text-primary placeholder:text-charcoal/40 focus:outline-none focus:ring-2 focus:ring-accent/25 focus:border-accent/60"
             />
             <input
               type="email"
@@ -147,13 +150,13 @@ export default function NewsletterModal() {
               placeholder="Enter your email address"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full px-4 py-3 rounded-lg border border-sand text-sm text-primary placeholder:text-charcoal/40 focus:outline-none focus:ring-2 focus:ring-[#22c55e]/40 focus:border-[#22c55e]"
+              className="w-full px-4 py-3 rounded-lg border border-sand bg-white text-sm text-primary placeholder:text-charcoal/40 focus:outline-none focus:ring-2 focus:ring-accent/25 focus:border-accent/60"
             />
             {error && <p className="text-xs text-red-600">{error}</p>}
             <button
               type="submit"
               disabled={status === 'sending'}
-              className="w-full py-3.5 rounded-lg bg-[#22c55e] text-white text-sm font-semibold hover:opacity-95 transition-opacity disabled:opacity-60 shadow-soft"
+              className="w-full py-3.5 rounded-pill bg-primary text-white text-sm font-semibold hover:bg-primary-dark transition-colors disabled:opacity-60 shadow-soft"
             >
               {status === 'sending' ? 'Signing up…' : 'Sign up'}
             </button>
