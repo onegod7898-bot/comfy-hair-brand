@@ -1,5 +1,6 @@
 import { Routes, Route, Navigate } from 'react-router-dom'
 import Layout from './components/Layout'
+import NavigationLoader from './components/NavigationLoader'
 import Home from './pages/Home'
 import Categories from './pages/Categories'
 import Product from './pages/Product'
@@ -23,7 +24,9 @@ import Privacy from './pages/Privacy'
 
 export default function App() {
   return (
-    <Routes>
+    <>
+      <NavigationLoader />
+      <Routes>
       <Route path="/onboarding" element={<Onboarding />} />
       <Route path="/auth" element={<Auth />} />
       <Route path="/" element={<Layout />}>
@@ -49,6 +52,7 @@ export default function App() {
         <Route path="chat" element={<Chat />} />
       </Route>
       <Route path="*" element={<Navigate to="/" replace />} />
-    </Routes>
+      </Routes>
+    </>
   )
 }
