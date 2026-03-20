@@ -1,6 +1,7 @@
 import { Outlet, useNavigate, useLocation } from 'react-router-dom'
 import { useCart } from '../context/CartContext'
 import NewsletterModal from './NewsletterModal'
+import PageNavigationLoader from './PageNavigationLoader'
 
 const navLinks = [
   { path: '/', label: 'Home' },
@@ -190,6 +191,8 @@ export default function Layout() {
       </a>
 
       <NewsletterModal />
+
+      <PageNavigationLoader />
     </div>
   )
 }

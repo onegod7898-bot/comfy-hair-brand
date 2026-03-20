@@ -61,3 +61,51 @@ body {
     transform: translateX(-55%);
   }
 }
+
+/* Premium page navigation loader (logo + rings) */
+.page-nav-loader {
+  background: rgba(250, 246, 245, 0.94);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+.page-nav-loader-shine {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 70% 50% at 50% 45%, rgba(183, 110, 121, 0.12), transparent 65%);
+  pointer-events: none;
+}
+.page-nav-loader-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1.5px solid rgba(183, 110, 121, 0.35);
+  border-top-color: rgba(183, 110, 121, 0.95);
+  border-right-color: transparent;
+  animation: pageNavLoaderSpin 2.6s linear infinite;
+}
+.page-nav-loader-ring--delay {
+  inset: -6px;
+  border-color: rgba(183, 110, 121, 0.15);
+  border-top-color: rgba(183, 110, 121, 0.45);
+  animation-duration: 3.4s;
+  animation-direction: reverse;
+}
+@keyframes pageNavLoaderSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.page-nav-loader-logo {
+  animation: pageNavLoaderLogo 1.35s ease-in-out infinite;
+}
+@keyframes pageNavLoaderLogo {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.92;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+}
