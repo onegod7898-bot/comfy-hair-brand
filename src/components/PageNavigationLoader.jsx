@@ -2,7 +2,7 @@ import { useEffect, useState, useRef } from 'react'
 import { useLocation } from 'react-router-dom'
 
 /** Minimum time the branded loader stays visible (ms) — feels premium, avoids flicker */
-const MIN_VISIBLE_MS = 520
+const MIN_VISIBLE_MS = 880
 
 /**
  * Full-screen branded transition when navigating between pages (Layout routes).
