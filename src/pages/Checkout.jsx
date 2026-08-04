@@ -15,20 +15,31 @@ export default function Checkout() {
   const { items, total, clearCart } = useCart()
   const [step, setStep] = useState(1)
   const [payment, setPayment] = useState('nigeria-pay')
+  const [placing, setPlacing] = useState(false)
+  const [orderError, setOrderError] = useState('')
 
   const subtotal = items.reduce((sum, i) => sum + i.price * i.qty, 0)
   const shipping = 0
   const discount = 0
 
   const handleConfirmOrder = async () => {
-    let orderId = null
+    setPlacing(true)
+    setOrderError('')
+    let orderId
     try {
       const { id } = await createOrder(items, total)
       orderId = id
-    } catch (_) {}
-    notifyOrder(items, total)
+    } catch (err) {
+      console.error('Order creation failed', err)
+      setOrderError(`${err.message} Your cart has been kept — please try again.`)
+      setPlacing(false)
+      return
+    }
+    const orderedItems = [...items]
+    notifyOrder(orderedItems, total)
     clearCart()
-    navigate('/order-success', { state: { orderId, items: [...items], total } })
+    setPlacing(false)
+    navigate('/order-success', { state: { orderId, items: orderedItems, total } })
   }
 
   return (
@@ -184,12 +195,18 @@ export default function Checkout() {
               <strong className="text-gray-900">{NIGERIA_PAY_ACCOUNTS[0].account}</strong> and{' '}
               <strong className="text-gray-900">{NIGERIA_PAY_ACCOUNTS[1].account}</strong>. All amounts in Naira.
             </p>
+            {orderError && (
+              <p className="mt-4 p-3 rounded-lg bg-red-50 text-red-700 text-sm font-medium" role="alert">
+                {orderError}
+              </p>
+            )}
             <button
               type="button"
               onClick={handleConfirmOrder}
-              className="w-full mt-6 py-3 bg-primary text-white font-medium rounded-pill hover:bg-primary-dark transition-colors"
+              disabled={placing || items.length === 0}
+              className="w-full mt-6 py-3 bg-primary text-white font-medium rounded-pill hover:bg-primary-dark transition-colors disabled:opacity-50"
             >
-              Confirm Order
+              {placing ? 'Placing order…' : orderError ? 'Try again' : 'Confirm Order'}
             </button>
           </div>
         )}

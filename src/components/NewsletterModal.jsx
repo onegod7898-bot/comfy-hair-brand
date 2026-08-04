@@ -15,7 +15,8 @@ function shouldOfferModal() {
     const t = parseInt(raw, 10)
     if (Number.isNaN(t)) return true
     return Date.now() - t > DISMISS_COOLDOWN_MS
-  } catch {
+  } catch (err) {
+    console.warn('Newsletter modal: localStorage unavailable', err)
     return true
   }
 }
@@ -32,8 +33,8 @@ export default function NewsletterModal() {
     setOpen(false)
     try {
       localStorage.setItem(LS_DISMISSED_AT, String(Date.now()))
-    } catch {
-      /* ignore */
+    } catch (err) {
+      console.warn('Newsletter modal: could not persist dismissal', err)
     }
   }, [])
 
@@ -73,8 +74,8 @@ export default function NewsletterModal() {
     if (ok) {
       try {
         localStorage.setItem(LS_SUBSCRIBED, '1')
-      } catch {
-        /* ignore */
+      } catch (err) {
+        console.warn('Newsletter modal: could not persist subscription', err)
       }
       setStatus('done')
       window.setTimeout(() => {
