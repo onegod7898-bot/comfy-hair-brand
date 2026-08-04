@@ -27,8 +27,7 @@ export async function updateOrderStatus(orderId, status, adminSecret = null) {
 }
 
 export async function listOrders(adminSecret) {
-  const url = `${API}/api/orders`
-  const res = await fetch(adminSecret ? `${url}?admin=${encodeURIComponent(adminSecret)}` : url, {
+  const res = await fetch(`${API}/api/orders`, {
     method: 'GET',
     headers: headers(adminSecret),
   })
