@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import { useFavorites } from '../context/FavoritesContext'
+import { formatNaira } from '../utils/format'
 
 const allProducts = [
   { id: '1', name: 'FORM Smart Swim Goggles 2', price: 135, image: '🥽' },
@@ -56,7 +57,7 @@ export default function Favorites() {
                 </div>
                 <div className="p-3">
                   <p className="text-sm font-medium text-gray-900 truncate">{p.name}</p>
-                  <p className="text-sm font-semibold text-primary">₦{p.price.toLocaleString()}</p>
+                  <p className="text-sm font-semibold text-primary">{formatNaira(p.price)}</p>
                 </div>
               </button>
             ))}

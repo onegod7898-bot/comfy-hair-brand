@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { listOrders, updateOrderStatus } from '../services/ordersApi'
+import { formatNaira } from '../utils/format'
 
 const TABS = [
   { key: 'pending', label: 'Active / Pending' },
@@ -200,12 +201,12 @@ export default function Admin() {
               <ul className="text-sm text-charcoal mb-3">
                 {(order.items || []).map((item, i) => (
                   <li key={i}>
-                    {item.name} — ₦{Number(item.price || 0).toLocaleString()} × {item.qty || 1}
+                    {item.name} — {formatNaira(item.price)} × {item.qty || 1}
                   </li>
                 ))}
               </ul>
               <div className="flex flex-wrap items-center justify-between gap-2">
-                <p className="font-semibold text-primary">₦{Number(order.total || 0).toLocaleString()}</p>
+                <p className="font-semibold text-primary">{formatNaira(order.total)}</p>
                 {tab === 'pending' && (
                   <div className="flex gap-2">
                     <button

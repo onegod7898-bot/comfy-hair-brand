@@ -2,11 +2,12 @@ import { useNavigate } from 'react-router-dom'
 import { useCart } from '../context/CartContext'
 import LazyVideo from '../components/LazyVideo'
 import { NIGERIA_PAY_ACCOUNTS } from '../config'
+import { cartSubtotal, formatNaira, isVideoSource } from '../utils/format'
 
 export default function Bag() {
   const navigate = useNavigate()
   const { items, total, updateQty } = useCart()
-  const subtotal = items.reduce((sum, i) => sum + i.price * i.qty, 0)
+  const subtotal = cartSubtotal(items)
   const shipping = 0
 
   return (
@@ -42,7 +43,7 @@ export default function Bag() {
                   className="flex gap-4 rounded-card-lg border border-sand p-4 bg-white shadow-soft"
                 >
                   <div className="w-20 h-24 rounded-lg bg-page-dark flex-shrink-0 overflow-hidden relative flex items-center justify-center">
-                    {item.image && (item.image.includes('.mp4') || item.image.includes('/videos/')) ? (
+                    {isVideoSource(item.image) ? (
                       <LazyVideo
                         src={item.image}
                         className="w-full h-full object-cover"
@@ -56,7 +57,7 @@ export default function Bag() {
                   </div>
                   <div className="flex-1 min-w-0">
                     <p className="text-sm font-medium text-primary truncate">{item.name}</p>
-                    <p className="text-sm font-semibold text-accent mt-0.5">₦{Number(item.price).toLocaleString()}</p>
+                    <p className="text-sm font-semibold text-accent mt-0.5">{formatNaira(item.price)}</p>
                     <div className="flex items-center gap-2 mt-2">
                       <button
                         type="button"
@@ -91,15 +92,15 @@ export default function Bag() {
             <div className="mt-6 pt-4 border-t border-sand space-y-2">
               <div className="flex justify-between text-sm text-charcoal/70">
                 <span>Subtotal</span>
-                <span>₦{subtotal.toLocaleString()}</span>
+                <span>{formatNaira(subtotal)}</span>
               </div>
               <div className="flex justify-between text-sm text-charcoal/70">
                 <span>Shipping</span>
-                <span>{shipping === 0 ? 'Free' : `₦${shipping.toLocaleString()}`}</span>
+                <span>{shipping === 0 ? 'Free' : formatNaira(shipping)}</span>
               </div>
               <div className="flex justify-between font-semibold text-primary pt-2">
                 <span>Total</span>
-                <span>₦{total.toLocaleString()}</span>
+                <span>{formatNaira(total)}</span>
               </div>
             </div>
             <p className="text-xs text-charcoal/60 mt-2">

@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 import LazyVideo from '../components/LazyVideo'
 import { getGalleryProducts } from '../data/wigProducts'
+import { formatNaira } from '../utils/format'
 
 export default function Gallery() {
   const navigate = useNavigate()
@@ -30,7 +31,7 @@ export default function Gallery() {
             </div>
             <div className="p-4">
               <p className="font-medium text-primary truncate">{p.name}</p>
-              <p className="text-sm text-charcoal/70 mt-0.5">₦{p.price.toLocaleString()}</p>
+              <p className="text-sm text-charcoal/70 mt-0.5">{formatNaira(p.price)}</p>
             </div>
           </button>
         ))}

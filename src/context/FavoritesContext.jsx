@@ -1,6 +1,9 @@
-import { createContext, useContext, useState, useCallback } from 'react'
+import { useState, useCallback } from 'react'
+import { createStoreContext } from '../utils/createStoreContext'
 
-const FavoritesContext = createContext(null)
+const [FavoritesContext, useFavorites] = createStoreContext('Favorites')
+
+export { useFavorites }
 
 export function FavoritesProvider({ children }) {
   const [ids, setIds] = useState(new Set(['1', '3']))
@@ -21,10 +24,4 @@ export function FavoritesProvider({ children }) {
       {children}
     </FavoritesContext.Provider>
   )
-}
-
-export function useFavorites() {
-  const ctx = useContext(FavoritesContext)
-  if (!ctx) throw new Error('useFavorites must be used within FavoritesProvider')
-  return ctx
 }

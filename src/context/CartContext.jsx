@@ -1,12 +1,16 @@
-import { createContext, useContext, useState, useCallback } from 'react'
+import { useState, useCallback } from 'react'
+import { createStoreContext } from '../utils/createStoreContext'
+import { cartSubtotal } from '../utils/format'
 
-const CartContext = createContext(null)
+const [CartContext, useCart] = createStoreContext('Cart')
+
+export { useCart }
 
 export function CartProvider({ children }) {
   const [items, setItems] = useState([])
 
   const count = items.reduce((sum, i) => sum + i.qty, 0)
-  const total = items.reduce((sum, i) => sum + i.price * i.qty, 0)
+  const total = cartSubtotal(items)
 
   const updateQty = useCallback((id, delta) => {
     setItems((prev) =>
@@ -31,10 +35,4 @@ export function CartProvider({ children }) {
       {children}
     </CartContext.Provider>
   )
-}
-
-export function useCart() {
-  const ctx = useContext(CartContext)
-  if (!ctx) throw new Error('useCart must be used within CartProvider')
-  return ctx
 }
