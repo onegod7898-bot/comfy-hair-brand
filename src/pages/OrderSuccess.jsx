@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { notifyOrderCancelled } from '../services/notify'
 import { updateOrderStatus } from '../services/ordersApi'
@@ -6,12 +7,22 @@ export default function OrderSuccess() {
   const navigate = useNavigate()
   const location = useLocation()
   const orderState = location.state
+  const [cancelling, setCancelling] = useState(false)
+  const [cancelError, setCancelError] = useState('')
 
   const handleCancelOrder = async () => {
+    setCancelError('')
     if (orderState?.orderId) {
+      setCancelling(true)
       try {
         await updateOrderStatus(orderState.orderId, 'cancelled')
-      } catch (_) {}
+      } catch (err) {
+        console.error('Order cancellation failed', err)
+        setCancelError(`${err.message} Your order was not cancelled — please try again or contact us on WhatsApp.`)
+        setCancelling(false)
+        return
+      }
+      setCancelling(false)
     }
     if (orderState?.items != null) {
       notifyOrderCancelled(orderState.items, orderState.total)
@@ -39,11 +50,17 @@ export default function OrderSuccess() {
         <button
           type="button"
           onClick={handleCancelOrder}
-          className="px-8 py-3.5 border-2 border-sand text-charcoal font-semibold rounded-pill hover:bg-page-dark transition-colors"
+          disabled={cancelling}
+          className="px-8 py-3.5 border-2 border-sand text-charcoal font-semibold rounded-pill hover:bg-page-dark transition-colors disabled:opacity-50"
         >
-          Cancel this order
+          {cancelling ? 'Cancelling…' : 'Cancel this order'}
         </button>
       </div>
+      {cancelError && (
+        <p className="mt-4 max-w-sm p-3 rounded-lg bg-red-50 text-red-700 text-sm font-medium" role="alert">
+          {cancelError}
+        </p>
+      )}
     </div>
   )
 }

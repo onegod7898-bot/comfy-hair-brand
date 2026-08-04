@@ -29,9 +29,10 @@ export default function Admin() {
       const data = await listOrders(secret)
       setOrders(Array.isArray(data) ? data : [])
     } catch (e) {
+      console.error('Failed to load orders', e)
       setError(e.message || 'Failed to load orders')
       setOrders([])
-      if (e.message && e.message.toLowerCase().includes('invalid')) {
+      if (e.status === 401) {
         sessionStorage.removeItem('admin_secret')
         setSecret(null)
       }
@@ -73,6 +74,7 @@ export default function Admin() {
       await updateOrderStatus(orderId, newStatus, secret)
       await loadOrders()
     } catch (e) {
+      console.error(`Failed to set order ${orderId} to ${newStatus}`, e)
       setError(e.message || 'Update failed')
     } finally {
       setUpdating(null)
