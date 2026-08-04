@@ -6,6 +6,7 @@ import { getProductById, getOtherProducts } from '../data/wigProducts'
 import { notifyCart } from '../services/notify'
 import { NIGERIA_PAY_ACCOUNTS } from '../config'
 import LazyVideo from '../components/LazyVideo'
+import { formatNaira } from '../utils/format'
 
 export default function Product() {
   const { id } = useParams()
@@ -68,9 +69,9 @@ export default function Product() {
           <h1 className="text-white font-display text-xl md:text-2xl font-semibold mt-1">{product.name}</h1>
           <p className="text-white/90 text-sm mt-0.5">{product.description}</p>
           <p className="text-white/80 text-xs mt-1">Maintaining :: Hair serum</p>
-          <p className="text-white font-display text-2xl font-semibold mt-3">₦{product.price.toLocaleString()}</p>
+          <p className="text-white font-display text-2xl font-semibold mt-3">{formatNaira(product.price)}</p>
           {product.normalPrice && (
-            <p className="text-white/60 text-sm line-through">₦{product.normalPrice.toLocaleString()}</p>
+            <p className="text-white/60 text-sm line-through">{formatNaira(product.normalPrice)}</p>
           )}
         </div>
         <button
@@ -135,7 +136,7 @@ export default function Product() {
                 </div>
                 <div className="p-2.5">
                   <p className="text-xs font-medium text-primary truncate">{p.name}</p>
-                  <p className="text-xs text-charcoal/70">₦{p.price.toLocaleString()}</p>
+                  <p className="text-xs text-charcoal/70">{formatNaira(p.price)}</p>
                 </div>
               </button>
             ))}

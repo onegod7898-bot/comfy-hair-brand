@@ -4,6 +4,7 @@ import { useCart } from '../context/CartContext'
 import { notifyOrder } from '../services/notify'
 import { createOrder } from '../services/ordersApi'
 import { NIGERIA_PAY_ACCOUNTS } from '../config'
+import { cartSubtotal, formatNaira } from '../utils/format'
 
 const paymentMethods = [
   { id: 'nigeria-pay', name: 'Bank / USSD (Opay & GTB)' },
@@ -16,7 +17,7 @@ export default function Checkout() {
   const [step, setStep] = useState(1)
   const [payment, setPayment] = useState('nigeria-pay')
 
-  const subtotal = items.reduce((sum, i) => sum + i.price * i.qty, 0)
+  const subtotal = cartSubtotal(items)
   const shipping = 0
   const discount = 0
 
@@ -155,28 +156,28 @@ export default function Checkout() {
               {items.map((i) => (
                 <li key={i.id} className="flex justify-between text-sm">
                   <span className="text-gray-700">{i.name} × {i.qty}</span>
-                  <span>₦{(i.price * i.qty).toLocaleString()}</span>
+                  <span>{formatNaira(i.price * i.qty)}</span>
                 </li>
               ))}
             </ul>
             <div className="border-t border-gray-200 pt-3 space-y-2">
               <div className="flex justify-between text-sm text-gray-600">
                 <span>Subtotal</span>
-                <span>₦{subtotal.toLocaleString()}</span>
+                <span>{formatNaira(subtotal)}</span>
               </div>
               <div className="flex justify-between text-sm text-gray-600">
                 <span>Shipping</span>
-                <span>{shipping === 0 ? 'Free' : `₦${shipping.toLocaleString()}`}</span>
+                <span>{shipping === 0 ? 'Free' : formatNaira(shipping)}</span>
               </div>
               {discount > 0 && (
                 <div className="flex justify-between text-sm text-green-600">
                   <span>Discount</span>
-                  <span>−₦{discount.toLocaleString()}</span>
+                  <span>−{formatNaira(discount)}</span>
                 </div>
               )}
               <div className="flex justify-between font-semibold text-gray-900 pt-2">
                 <span>Total</span>
-                <span>₦{total.toLocaleString()}</span>
+                <span>{formatNaira(total)}</span>
               </div>
             </div>
             <p className="text-xs text-gray-600 mt-2">

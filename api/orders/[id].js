@@ -1,46 +1,17 @@
-import { put, get } from '@vercel/blob'
-
-const BLOB_PATH = 'comfy-orders.json'
-const ADMIN_SECRET = process.env.ADMIN_SECRET
-
-async function readOrders() {
-  try {
-    const res = await get(BLOB_PATH, { access: 'private' })
-    if (!res || res.statusCode !== 200) return []
-    const text = await new Response(res.stream).text()
-    return text ? JSON.parse(text) : []
-  } catch {
-    return []
-  }
-}
-
-async function writeOrders(orders) {
-  await put(BLOB_PATH, JSON.stringify(orders), {
-    access: 'private',
-    contentType: 'application/json',
-  })
-}
-
-function requireAdmin(req) {
-  const secret = req.headers?.authorization?.replace('Bearer ', '') || req.query?.admin
-  return !!ADMIN_SECRET && secret === ADMIN_SECRET
-}
+import { applyCors, parseBody, readOrders, requireAdmin, writeOrders } from '../_lib/orders.js'
 
 export default async function handler(req, res) {
   const id = req.query?.id
   if (!id) return res.status(400).json({ error: 'Order id required' })
 
-  res.setHeader('Access-Control-Allow-Origin', '*')
-  res.setHeader('Access-Control-Allow-Methods', 'PATCH, OPTIONS')
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization')
+  applyCors(res, 'PATCH')
   if (req.method === 'OPTIONS') return res.status(200).end()
 
   if (req.method !== 'PATCH') {
     return res.status(405).json({ error: 'Method not allowed' })
   }
 
-  const body = typeof req.body === 'string' ? JSON.parse(req.body || '{}') : req.body || {}
-  const { status } = body
+  const { status } = parseBody(req)
   if (!['pending', 'shipped', 'cancelled'].includes(status)) {
     return res.status(400).json({ error: 'Invalid status. Use: pending, shipped, cancelled' })
   }

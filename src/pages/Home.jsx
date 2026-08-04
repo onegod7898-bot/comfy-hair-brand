@@ -6,6 +6,7 @@ import {
   getGalleryProducts,
   getFirstProductPerCategory,
 } from '../data/wigProducts'
+import { formatNaira } from '../utils/format'
 
 export default function Home() {
   const navigate = useNavigate()
@@ -107,7 +108,7 @@ export default function Home() {
                   )}
                   {product && (
                     <span className="absolute bottom-3 left-3 right-3 bg-white/95 backdrop-blur-sm px-3 py-2 rounded-lg text-sm font-semibold text-primary shadow-soft">
-                      ₦{product.price.toLocaleString()}
+                      {formatNaira(product.price)}
                     </span>
                   )}
                 </div>
@@ -152,7 +153,7 @@ export default function Home() {
                     </span>
                   )}
                   <span className="absolute bottom-3 left-3 right-3 bg-white/95 backdrop-blur-sm px-3 py-2 rounded-lg text-sm font-semibold text-primary shadow-soft">
-                    ₦{p.price.toLocaleString()}
+                    {formatNaira(p.price)}
                   </span>
                   <button
                     type="button"
@@ -206,7 +207,7 @@ export default function Home() {
                 </div>
                 <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/70 to-transparent text-white">
                   <p className="text-sm font-medium truncate">{p.name}</p>
-                  <p className="text-sm font-semibold">₦{p.price.toLocaleString()}</p>
+                  <p className="text-sm font-semibold">{formatNaira(p.price)}</p>
                 </div>
               </button>
             ))}

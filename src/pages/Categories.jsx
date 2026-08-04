@@ -2,6 +2,7 @@ import { useNavigate, useSearchParams } from 'react-router-dom'
 import { useFavorites } from '../context/FavoritesContext'
 import LazyVideo from '../components/LazyVideo'
 import { wigCategories, getProductsByCategory } from '../data/wigProducts'
+import { formatNaira } from '../utils/format'
 
 export default function Categories() {
   const navigate = useNavigate()
@@ -58,7 +59,7 @@ export default function Categories() {
                 </span>
               )}
               <span className="absolute top-3 right-3 bg-white/95 backdrop-blur-sm px-2.5 py-1.5 rounded-lg text-sm font-semibold text-primary shadow-soft">
-                ₦{p.price.toLocaleString()}
+                {formatNaira(p.price)}
               </span>
               <button
                 type="button"
@@ -72,7 +73,7 @@ export default function Categories() {
             <div className="p-4">
               <p className="text-sm font-medium text-primary truncate">{p.name}</p>
               {p.normalPrice && (
-                <p className="text-xs text-charcoal/50 line-through mt-0.5">₦{p.normalPrice.toLocaleString()}</p>
+                <p className="text-xs text-charcoal/50 line-through mt-0.5">{formatNaira(p.normalPrice)}</p>
               )}
             </div>
           </button>
